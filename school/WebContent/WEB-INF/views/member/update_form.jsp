@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../global/header.jsp"/>
 <div id="join">
-		<div class="joinTop">
-			<h2 class="text-center">회원 상세 정보</h2>
+		<div class="updateTop">
+			<h2 class="text-center">회원 정보 수정</h2>
 		</div>
-		<div class="joinCenter row">
-			<form action="${context}/member/update_form.do"  name="updateForm" class="form-horizontal">
-				<fieldset class="joinField">
+		<div class="updateCenter row">
+			<form action="${context}/member/login.do"  name="updateForm" class="form-horizontal">
+				<fieldset class="updateField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>
 					 	<div class="col-sm-4">
@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label for="input_pw" class="col-sm-4 control-label">비밀번호</label>
 					 	<div class="col-sm-4">
-							<input type="password" class="form-control" id="password" name="password" value="${member.password}"/>
+							<input type="text" class="form-control" id="password" name="password" value="${member.password}"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<div class="input_button text-center">
-						<input type="submit" id="updateButton" class="btn btn-primary" value ="수정화면으로 이동"/>
+						<input type="submit" id="updateButton" class="btn btn-primary" value ="수정"/>
 					</div>
 						
 				</fieldset>

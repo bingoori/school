@@ -26,7 +26,9 @@ SELECT * FROM Member;
 SELECT * FROM Member 
 WHERE id = 'choi';
 SELECT id AS id , password AS password FROM Member WHERE id ='choi' AND password='1';
-SELECT * FROM Member where id = 'choi';
+SELECT * FROM Member where id = 'woo';
+
+SELECT * FROM Member WHERE id ='woo';
  delete from Member where id ='bingoori';
 
 truncate table Member;

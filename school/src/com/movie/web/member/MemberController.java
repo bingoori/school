@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 
-@WebServlet({ "/member/update_form.do","/member/login_form.do", "/member/join_form.do", "/member/join.do", "/member/login.do" })
+@WebServlet({ "/member/update_form.do", "/member/login_form.do", "/member/join_form.do", "/member/join.do",
+		"/member/login.do" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +21,7 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberBean mBean = new MemberBean();
-		
+
 		Command command = new Command();
 		MemberService service = new MemberServiceImpl();
 		String id = "", password = "";
@@ -38,9 +39,10 @@ public class MemberController extends HttpServlet {
 			break;
 		case "login":
 			System.out.println("====  로그인 ===========");
-			if (service.isMember(request.getParameter("id"),request.getParameter("password")) == true) {
+			System.out.println(request.getParameter("id") + "" + request.getParameter("password") + "@@@@@");
+			if (service.isMember(request.getParameter("id"), request.getParameter("password")) == true) {
 				mBean = service.login(request.getParameter("id"), request.getParameter("password"));
-				request.setAttribute("member",mBean);
+				request.setAttribute("member", mBean);
 				command = CommandFactory.createCommand(directory, "detail");
 			} else {
 				System.out.println("==== 로그인 실패 =========");
@@ -52,13 +54,15 @@ public class MemberController extends HttpServlet {
 			break;
 		case "update_form":
 			System.out.println("==== update_form ====");
-			request.setAttribute("member", service.detail(request.getParameter("id")));
+			mBean = service.detail(request.getParameter("id"));
+			request.setAttribute("member", mBean);
 			command = CommandFactory.createCommand(directory, action);
 			break;
 		default:
 			command = CommandFactory.createCommand(directory, action);
 			break;
 		}
+		System.out.println("오픈될 페이지 :" + command.getView());
 		RequestDispatcher dis = request.getRequestDispatcher(command.getView());
 		dis.forward(request, response);
 	}

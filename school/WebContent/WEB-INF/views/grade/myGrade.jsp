@@ -3,39 +3,56 @@
 <jsp:include page="../global/header.jsp" />
 <br>
 <div>
-<div class="mg_auto" style="width: 1000px;">
+	<div id="mygrade">
+		<div class="mygradeTop">
+			<h2 class="text-center">회원 성적 정보</h2>
+		</div>
+		<div class="joinCenter row">
+			<form action="" name="mygradeForm" class="form-horizontal">
+				<fieldset class="mygradeField">
+					<div class="form-group">
+						<label for="input_id" class="col-sm-4 control-label">Java</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="id" name="id"
+								value=" ${score.java}" readonly />
 
-	<table border="1">
-		<tr>
-			<td>과목</td>
-			<td>점수</td>
-	
-		</tr>
-		<tr>
-			<td>JAVA</td>
-			<td>${score.java}</td>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input_pw" class="col-sm-4 control-label">Jsp</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="password"
+								name="password" value="${score.jsp}" readonly />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input_name" class="col-sm-4 control-label">Sql</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="name" name="name"
+								value="${score.sql}" readonly />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input_name" class="col-sm-4 control-label">Spring</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="addr" name="addr"
+								value=" ${score.spring}" readonly />
+						</div>
+					</div>
 
-		</tr>
-		<tr>
-			<td>JSP</td>
-			<td>${score.jsp}</td>
-	
-		</tr>
-		<tr>
-			<td>SQL</td>
-			<td>${score.sql}</td>
-	
-		</tr>
-		<tr>
-			<td>SPRING</td>
-			<td>${score.spring}</td>
-	
-		</tr>
-	</table>
+				</fieldset>
+
+			</form>
+
+		</div>
+
+
 	</div>
-	<p>
-	<br>
-	<div class= "mg_auto" style="width: 1000px;"><form action="${context}/global/main.do">
-	<input type="submit" value="홈으로"/></form> </div>
+
+	<div class="input_button text-center">
+		<form action="${context}/global/main.do">
+			<input type="submit" value="홈으로" class="btn btn-primary"/>
+		</form>
+	</div>
 	<jsp:include page="../global/footer.jsp" />
 </div>

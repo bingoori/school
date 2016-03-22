@@ -19,6 +19,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	public MemberDAOImpl() {
 		conn = DatabaseFactory.getDatabase(Vendor.ORACLE, Constants.ID, Constants.PASSWORD).getConnection();
+//		conn = DatabaseFactory.getDatabase(Vendor.ORACLE, Constants.ID, Constants.PASSWORD).getConnection();
 	}
 
 	@Override
@@ -35,15 +36,20 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean selectMember(String id) {
+		System.out.println("@@@@  "+id+"  @@@@");
 		MemberBean temp = new MemberBean();
 		try {
+			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM Member WHERE id =" + "'" + id + "'");
+			
 			while (rs.next()) {
+	
 				temp.setId(rs.getString("id"));
 				temp.setPassword(rs.getString("password"));
 				temp.setName(rs.getString("name"));
 				temp.setAddr(rs.getString("addr"));
 				temp.setBirth(rs.getInt("birth"));
+			
 			}
 		} catch (Exception e) {
 			System.out.println("selectById에서 에러 발생");
@@ -69,6 +75,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public boolean isMember(String id, String password) {
 		boolean result = false;
 		try {
+			stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 					"SELECT id AS id FROM Member WHERE id =" + "'" + id + "'" + "AND password=" + "'" + password + "'");
 			// rs.last(); // 커서이동

@@ -13,14 +13,14 @@
 					<label for="input_id" class="col-sm-4 control-label">아이디</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="id" name="id"
-							value="아이디를 ${member.id}" readonly />
+							value=" ${member.id}" readonly />
 
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="input_pw" class="col-sm-4 control-label">비밀번호</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" id="password"
+						<input type="text" class="form-control" id="password"
 							name="password" value="${member.password}" readonly />
 					</div>
 				</div>
@@ -45,13 +45,21 @@
 							value="${member.birth}" readonly />
 					</div>
 				</div>
-				<div class="input_button text-center">
-					<input type="submit" id="updateButton" class="btn btn-primary"
-						value="수정화면으로 이동" /> <input type="hidden" id="id" name="id"
-						value="${member.id}" />
-				</div>
-
-			</fieldset>
-		</form>
 	</div>
+	</fieldset>
+	</form>
+	<div class="input_button text-center">
+		<form action="${context}/grade/my_grade.do">
+			<input type="submit" id="updateButton" class="btn btn-primary"
+				value="성적보기" /> <input type="hidden" id="id" name="id"
+				value="${member.id}" />
+		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary"
+			value="수정화면으로 이동" /> <input type="hidden" id="id" name="id"
+			value="${member.id}" />
+			</form>
+		
+	</div>
+	
+	<%-- <form action="${context}/member/update_form.do"> --%>
+	
 </div>
