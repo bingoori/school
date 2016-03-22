@@ -13,22 +13,22 @@
 		</tr>
 		<tr>
 			<td>JAVA</td>
-			<td>null</td>
+			<td>${score.java}</td>
 
 		</tr>
 		<tr>
 			<td>JSP</td>
-			<td>null</td>
+			<td>${score.jsp}</td>
 	
 		</tr>
 		<tr>
 			<td>SQL</td>
-			<td>null</td>
+			<td>${score.sql}</td>
 	
 		</tr>
 		<tr>
 			<td>SPRING</td>
-			<td>null</td>
+			<td>${score.spring}</td>
 	
 		</tr>
 	</table>

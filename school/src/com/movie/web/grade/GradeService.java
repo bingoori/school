@@ -30,6 +30,7 @@ public interface GradeService {
 	public String delete(String id);
 	// R 카운트 조회
 	public int getCount();
-	
+	// 성적 이름 조회
+	public GradeBean getGradeById(String id);
 	
 }

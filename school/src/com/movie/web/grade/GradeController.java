@@ -22,13 +22,15 @@ public class GradeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dis = null;
+		GradeService service = new GradeServiceImpl();
+		
 		String path = request.getServletPath();// 서블릿에서 전달한 action path
 		String directory = path.split("/")[1];
 		String action = path.split("/")[2].split("[.]")[0];
 		Command command = CommandFactory.createCommand(directory, action);
 		switch (action) {
 		case "my_grade":
-
+			request.setAttribute("score", service.getGradeById(request.getParameter("id")));
 			// command = CommandFactory.createCommand(directory, "main");
 			command = CommandFactory.createCommand(directory, "myGrade");
 			dis = request.getRequestDispatcher(command.getView());

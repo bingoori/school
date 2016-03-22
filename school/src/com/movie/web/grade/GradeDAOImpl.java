@@ -238,4 +238,45 @@ public class GradeDAOImpl implements GradeDAO {
 		return "Complete";
 	}
 
+	@Override
+	public GradeBean selectGradeById(String id) {
+		MemberBean member = new MemberBean();
+		GradeBean grade = new GradeBean();
+		//GradeMemberBean grademember = new GradeMemberBean();
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Class.forName(Constants.ORACLE_DRIVER);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM Grade WHERE id =" + "'" + id + "'");
+			// SELECT * FROM GradeMember WHERE hak = 9000127;
+			while (rs.next()) {
+				grade.setId("id");
+				grade.setHak(rs.getInt("hak"));
+				grade.setJava(rs.getInt("java"));
+				grade.setJsp(rs.getInt("jsp"));
+				grade.setSpring(rs.getInt("spring"));
+				grade.setSql(rs.getInt("sql"));
+			}
+			/*
+			 * while(rs.next()) { member.setId(rs.getString("id"));
+			 * member.setPassword(rs.getString("password"));
+			 * member.setName(rs.getString("name"));
+			 * member.setAddr(rs.getString("addr"));
+			 * member.setBirth(rs.getInt("birth"));
+			 * grade.setHak(rs.getInt("hak")); grade.setId(rs.getString("id"));
+			 * grade.setJava(rs.getInt("java")); grade.setJsp(rs.getInt("jsp"));
+			 * grade.setSpring(rs.getInt("spring"));
+			 * grade.setSql(rs.getInt("sql")); }
+			 */
+		} catch (Exception e) {
+			System.out.println("selectById에서 에러 발생");
+			e.printStackTrace();
+		}
+		/*
+		 * map.put("member", member); map.put("grade", grade);
+		 */
+		return grade;
+	}
+
 }

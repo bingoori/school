@@ -76,9 +76,16 @@ public class GradeServiceImpl implements GradeService {
 	@Override
 	public int getCount() {
 		// R 카운트 조회
-		
+
 		return dao.Count();
 
+	}
+
+	@Override
+	public GradeBean getGradeById(String id) {
+
+		return dao.selectGradeById(id);
+		
 	}
 
 }
