@@ -11,18 +11,20 @@
 			<img src="${context}/img/member/loginform_image.jpg" border="0" height="160px" width="160px"/>
 		</div>
 		<form action="${context}/member/login.do" name="loginForm" class="form-horizontal">
-		<div class="loginCenter row" style="margin-left: 43.5%;">
+		<div class="loginCenter row" style="margin-left: 38%;">
 				<fieldset class="loginField">
+				
 					<div class="form-group">
 					 	<label for="input_id" class="control-label sr-only">아이디</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요"/>
+					 	<div class="col-sm-5">
+							<input type="text" class="form-control" id="input_id" name="id" placeholder="아이디를 입력하세요"/>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="input_pw" class="control-label sr-only">비밀번호</label>
-					 	<div class="col-sm-4">
-							<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요"/>
+					 	<div class="col-sm-5">
+							<input type="password" class="form-control" id="input_pw" name="password" placeholder="비밀번호를 입력하세요"/>
 						</div>
 					</div>
 				</fieldset>

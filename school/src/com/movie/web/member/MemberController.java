@@ -37,7 +37,7 @@ public class MemberController extends HttpServlet {
 			break;
 		case "login":
 			System.out.println("====  로그인 ===========");
-			if (service.isMember(request.getParameter("id")) == true) {
+			if (service.isMember(request.getParameter("id"),request.getParameter("password")) == true) {
 				service.login(request.getParameter("id"), request.getParameter("password"));
 				command = CommandFactory.createCommand(directory, "detail");
 			} else {

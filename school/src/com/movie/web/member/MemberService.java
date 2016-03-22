@@ -14,5 +14,5 @@ public interface MemberService {
 
 	public String remove(String id, int password);
 	
-	public boolean isMember(String id);
+	public boolean isMember(String id,String password);
 }
