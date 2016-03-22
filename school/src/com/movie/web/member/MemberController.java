@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 
-@WebServlet({ "/member/login_form.do", "/member/join_form.do", "/member/join.do", "/member/login.do" })
+@WebServlet({ "/member/update_form.do","/member/login_form.do", "/member/join_form.do", "/member/join.do", "/member/login.do" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,12 +43,17 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("member",mBean);
 				command = CommandFactory.createCommand(directory, "detail");
 			} else {
+				System.out.println("==== 로그인 실패 =========");
 				command = CommandFactory.createCommand(directory, "login_form");
 			}
-
 			break;
 		case "login_form":
 			command = CommandFactory.createCommand(directory, "login_form");
+			break;
+		case "update_form":
+			System.out.println("==== update_form ====");
+			request.setAttribute("member", service.detail(request.getParameter("id")));
+			command = CommandFactory.createCommand(directory, action);
 			break;
 		default:
 			command = CommandFactory.createCommand(directory, action);

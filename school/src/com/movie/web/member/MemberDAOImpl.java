@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.movie.web.global.Constants;
@@ -13,6 +14,10 @@ public class MemberDAOImpl implements MemberDAO {
 	private Statement stmt; // 쿼리 전송 객체
 	private PreparedStatement pstmt; // 쿼리 전송 객체 2
 	private ResultSet rs; // 쿼리결과 (리턴값 회수 객체)
+
+	public MemberDAOImpl() {
+
+	}
 
 	@Override
 	public String insert(MemberBean member) {
@@ -30,9 +35,6 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberBean selectMember(String id) {
 		MemberBean temp = new MemberBean();
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
-			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM Member WHERE id =" + "'" + id + "'");
 			while (rs.next()) {
 				temp.setId(rs.getString("id"));
@@ -62,13 +64,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public boolean isMember(String id,String password) {
+	public boolean isMember(String id, String password) {
 		boolean result = false;
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT id AS id FROM Member WHERE id =" + "'" + id + "'"+"AND password="+"'"+password+"'");
+			rs = stmt.executeQuery(
+					"SELECT id AS id FROM Member WHERE id =" + "'" + id + "'" + "AND password=" + "'" + password + "'");
 			// rs.last(); // 커서이동
 			// count = rs.getRow();
 			String strId = "";
@@ -85,7 +85,7 @@ public class MemberDAOImpl implements MemberDAO {
 			System.out.println("selectById에서 에러 발생");
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
