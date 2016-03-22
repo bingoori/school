@@ -11,7 +11,7 @@ public class OracleTest {
 		Connection conn = null; // 지역변수 초기화
 		Statement stmt = null;
 		ResultSet rs = null; // deep copy (Interface)
-		try {
+/*		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			conn = DriverManager.getConnection(Constants.ORACLE_URL,Constants.ORACLE_ID,Constants.ORACLE_PASSWORD);
 			stmt = conn.createStatement();
@@ -25,6 +25,6 @@ public class OracleTest {
 		} catch (Exception e) {
 			System.out.println("오라클 에러 발생");
 			e.printStackTrace();
-		}
+		}*/
 	}
 }

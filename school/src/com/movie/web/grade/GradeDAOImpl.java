@@ -23,7 +23,7 @@ public class GradeDAOImpl implements GradeDAO {
 	public void insert(GradeMemberBean gradememberBean) {
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			String sql1 = " INSERT INTO Member VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, gradememberBean.getId());
@@ -68,7 +68,7 @@ public class GradeDAOImpl implements GradeDAO {
 		ArrayList<GradeMemberBean> arrList = new ArrayList<GradeMemberBean>();
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM GradeMember");
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
@@ -101,7 +101,7 @@ public class GradeDAOImpl implements GradeDAO {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM GradeMember WHERE hak =" + "'" + hak + "'");
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
@@ -144,7 +144,7 @@ public class GradeDAOImpl implements GradeDAO {
 		ArrayList<GradeMemberBean> arrList = new ArrayList<GradeMemberBean>();
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM GradeMember WHERE name =" + "'" + name + "'");
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
@@ -174,7 +174,7 @@ public class GradeDAOImpl implements GradeDAO {
 		int count = 0;
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			//stmt.executeQuery("SELECT * FROM Member").last();
 //			count = rs.getRow();
@@ -199,7 +199,7 @@ public class GradeDAOImpl implements GradeDAO {
 	public String update(int hak, int java, int jsp, int sql, int spring) {
 	try {
 		Class.forName(Constants.ORACLE_DRIVER);
-		conn = DriverManager.getConnection(Constants.ORACLE_URL,Constants.ORACLE_ID,Constants.ORACLE_PASSWORD);
+		conn = DriverManager.getConnection(Constants.ORACLE_URL,Constants.ID,Constants.PASSWORD);
 		pstmt =  conn.prepareStatement("update Grade set java = ?, sql = ?, jsp = ?, spring = ?"+
 				"where hak = ?");
 		pstmt.setInt(1, java);
@@ -224,7 +224,7 @@ public class GradeDAOImpl implements GradeDAO {
 			String sql1 = "delete from Member where id ='"+id+"'";
 			String sql2 = "delete from Grade where id ='"+id+"'";
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement();
 			stmt.executeQuery(sql1);
 			stmt.executeQuery(sql2);
@@ -246,7 +246,7 @@ public class GradeDAOImpl implements GradeDAO {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ID, Constants.PASSWORD);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM Grade WHERE id =" + "'" + id + "'");
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
