@@ -178,16 +178,16 @@ public class GradeDAOImpl implements GradeDAO {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			//stmt.executeQuery("SELECT * FROM Member").last();
 //			count = rs.getRow();
-			rs = stmt.executeQuery("SELECT * FROM GradeMember");
-			//rs = stmt.executeQuery("SELECT count(*) AS count FROM GradeMember");
-			rs.last(); // 커서이동
-			count = rs.getRow();
+			//rs = stmt.executeQuery("SELECT * FROM GradeMember");
+			rs = stmt.executeQuery("SELECT count(*) AS count FROM GradeMember");
+			//rs.last(); // 커서이동
+			//count = rs.getRow();
 			System.out.println(count+"countcountcoutn");
-			/*while(rs.next())
+			while(rs.next())
 			{
 				count = rs.getInt("count");
 				//count = rs.getInt(1);
-			}*/
+			}
 		} catch (Exception e) {
 			System.out.println("selectById에서 에러 발생");
 			e.printStackTrace();

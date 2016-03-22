@@ -77,7 +77,6 @@ public class GradeServiceImpl implements GradeService {
 	public int getCount() {
 		// R 카운트 조회
 		
-
 		return dao.Count();
 
 	}

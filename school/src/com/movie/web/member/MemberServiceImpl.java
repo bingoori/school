@@ -59,4 +59,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMember(id);
 	}
 
+	@Override
+	public boolean isMember(String id) {
+		
+		return dao.isMember(id);
+	}
+
 }

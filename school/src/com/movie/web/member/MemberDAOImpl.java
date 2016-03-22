@@ -33,9 +33,8 @@ public class MemberDAOImpl implements MemberDAO {
 			Class.forName(Constants.ORACLE_DRIVER);
 			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM Member WHERE id ="+"'"+id+"'");
-			while(rs.next())
-			{
+			rs = stmt.executeQuery("SELECT * FROM Member WHERE id =" + "'" + id + "'");
+			while (rs.next()) {
 				temp.setId(rs.getString("id"));
 				temp.setPassword(rs.getString("password"));
 				temp.setName(rs.getString("name"));
@@ -46,7 +45,7 @@ public class MemberDAOImpl implements MemberDAO {
 			System.out.println("selectById에서 에러 발생");
 			e.printStackTrace();
 		}
-		System.out.println("쿼리 조회 결과 :"+temp.getId());
+		System.out.println("쿼리 조회 결과 :" + temp.getId());
 		return temp;
 	}
 
@@ -60,6 +59,35 @@ public class MemberDAOImpl implements MemberDAO {
 	public String delete(String id, int password) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean isMember(String id) {
+		boolean result = false;
+		try {
+			Class.forName(Constants.ORACLE_DRIVER);
+			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT id AS id FROM Member WHERE id =" + "'" + id + "'");
+			// rs.last(); // 커서이동
+			// count = rs.getRow();
+			String strId = "";
+
+			while (rs.next()) {
+				strId = rs.getString("id");
+				// count = rs.getInt(1);
+			}
+			if (strId.equals("")) {
+				result = false;
+			} else {
+				result = true;
+			}
+		} catch (Exception e) {
+			System.out.println("selectById에서 에러 발생");
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

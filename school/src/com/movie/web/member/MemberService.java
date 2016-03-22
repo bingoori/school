@@ -13,5 +13,6 @@ public interface MemberService {
 	public MemberBean update(String id, String string, int i, String string2);
 
 	public String remove(String id, int password);
-
+	
+	public boolean isMember(String id);
 }

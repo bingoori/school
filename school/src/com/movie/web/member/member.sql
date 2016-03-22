@@ -26,7 +26,7 @@ SELECT * FROM Member;
 SELECT * FROM Member 
 WHERE id = 'choi';
 
-
+SELECT * FROM Member where id = 'choi';
  delete from Member where id ='bingoori';
 
 truncate table Member;
