@@ -23,7 +23,7 @@ public class GradeController extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher dis = null;
 		GradeService service = new GradeServiceImpl();
-		
+
 		String path = request.getServletPath();// 서블릿에서 전달한 action path
 		String directory = path.split("/")[1];
 		String action = path.split("/")[2].split("[.]")[0];

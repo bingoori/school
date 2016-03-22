@@ -58,9 +58,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean isMember(String id,String password) {
-		
-		return dao.isMember(id,password);
+	public boolean isMember(String id, String password) {
+
+		return dao.isMember(id, password);
 	}
 
 }
