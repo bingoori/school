@@ -25,7 +25,7 @@ drop table Member cascade constraint;
 SELECT * FROM Member;
 SELECT * FROM Member 
 WHERE id = 'choi';
-SELECT id AS id , password AS password FROM Member WHERE id ='choi';
+SELECT id AS id , password AS password FROM Member WHERE id ='choi' AND password='1';
 SELECT * FROM Member where id = 'choi';
  delete from Member where id ='bingoori';
 

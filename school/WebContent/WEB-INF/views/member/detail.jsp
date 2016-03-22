@@ -5,30 +5,30 @@
 	<tr>
 		<td rowspan="4"></td>
 		<td>아이디</td>
-		<td><input type="text" name="id" /></td>
+		<td><input type="text"  value="${member.id}"/></td>
 	</tr>
 	<tr>
 
 		<td>비밀번호</td>
-		<td><input type="text" name="password" /></td>
+		<td><input type="text" value="${member.password}"/></td>
 	</tr>
 	<tr>
 
 		<td>이름</td>
-		<td><input type="text" name="name" /></td>
+		<td><input type="text" value="${member.name}"/></td>
 	</tr>
 	<tr>
 
 		<td>주소</td>
-		<td><input type="text" name="addr" /></td>
+		<td><input type="text"  value="${member.addr}" /></td>
 	</tr>
 	<tr>
 		<td><input type="file" /></td>
 		<td>생년월일</td>
-		<td><input type="date" name="birth" /></td>
+		<td><input type="text" value="${member.birth}"/></td>
 	</tr>
 </table>
-<div> <form action="${context}/grade/my_grade.do">
+<div> <form action="${context}/grade/my_grade.do?id=${member.id}">
 	<input type="submit" value="내 성적 보기" />
 </form></div>
 <form action="${context}/global/main.do">

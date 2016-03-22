@@ -62,25 +62,23 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public boolean isMember(String id,String passowrd) {
+	public boolean isMember(String id,String password) {
 		boolean result = false;
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			conn = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID, Constants.ORACLE_PASSWORD);
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT id AS id, password AS password FROM Member WHERE id =" + "'" + id + "'");
+			rs = stmt.executeQuery("SELECT id AS id FROM Member WHERE id =" + "'" + id + "'"+"AND password="+"'"+password+"'");
 			// rs.last(); // 커서이동
 			// count = rs.getRow();
 			String strId = "";
-			String strPass = "";
 			while (rs.next()) {
 				strId = rs.getString("id");
-				strPass = rs.getString("password");
 				// count = rs.getInt(1);
 			}
 			if (strId.equals("")) {
 				result = false;
-			} else if(strId.equals(id)&& strPass.equals(passowrd)){
+			} else {
 				result = true;
 			}
 		} catch (Exception e) {

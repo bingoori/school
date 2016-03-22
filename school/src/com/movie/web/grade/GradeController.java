@@ -22,18 +22,25 @@ public class GradeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dis = null;
-		String path = request.getServletPath();//서블릿에서 전달한 action path
+		String path = request.getServletPath();// 서블릿에서 전달한 action path
 		String directory = path.split("/")[1];
 		String action = path.split("/")[2].split("[.]")[0];
 		Command command = CommandFactory.createCommand(directory, action);
-		if (action.equals("my_grade")) {
-			//command = CommandFactory.createCommand(directory, "main");
+		switch (action) {
+		case "my_grade":
+
+			// command = CommandFactory.createCommand(directory, "main");
 			command = CommandFactory.createCommand(directory, "myGrade");
 			dis = request.getRequestDispatcher(command.getView());
-			//getRequestDispatcher 는 페이지 이동하는 함수 
-			//request,response 는 세션이나 객체처리된 값들을 전달한다.
+			// getRequestDispatcher 는 페이지 이동하는 함수
+			// request,response 는 세션이나 객체처리된 값들을 전달한다.
 			dis.forward(request, response);
+			break;
+
+		default:
+			break;
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

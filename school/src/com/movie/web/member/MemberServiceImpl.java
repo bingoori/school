@@ -23,12 +23,10 @@ public class MemberServiceImpl implements MemberService {
 	public MemberBean login(String id, String password) {
 		MemberBean member = new MemberBean();
 		member = dao.selectMember(id);
-		MemberBean mBean = (map.containsKey(id) == false || !map.get(id).getPassword().equals(password)) ? null
-				: map.get(id);
 		// 로그인
 		// 아이디가 존재하지 않아서 실패한 경우와 비번이 틀려서 경우에 따라서
 		// 메시지를 전달해줘야 함
-		return mBean;
+		return member;
 	}
 
 	@Override

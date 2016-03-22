@@ -19,7 +19,8 @@ public class MemberController extends HttpServlet {
 	// 페이지 이동시에는 doGet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+	//	MemberBean mBean = new MemberBean();
+		
 		Command command = new Command();
 		MemberService service = new MemberServiceImpl();
 		String id = "", password = "";
@@ -38,7 +39,7 @@ public class MemberController extends HttpServlet {
 		case "login":
 			System.out.println("====  로그인 ===========");
 			if (service.isMember(request.getParameter("id"),request.getParameter("password")) == true) {
-				service.login(request.getParameter("id"), request.getParameter("password"));
+				request.setAttribute("member",service.login(request.getParameter("id"), request.getParameter("password")));
 				command = CommandFactory.createCommand(directory, "detail");
 			} else {
 				command = CommandFactory.createCommand(directory, "login_form");
@@ -52,7 +53,6 @@ public class MemberController extends HttpServlet {
 			command = CommandFactory.createCommand(directory, action);
 			break;
 		}
-		System.out.println("오픈된 페이지 : " + command.getView());
 		RequestDispatcher dis = request.getRequestDispatcher(command.getView());
 		dis.forward(request, response);
 	}
