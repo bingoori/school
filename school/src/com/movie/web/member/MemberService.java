@@ -4,7 +4,7 @@ public interface MemberService {
 	
 	public final static String NAME = "홍길동";
 
-	public String join(MemberBean member);
+	public int join(MemberBean member);
 
 	public MemberBean login(String id, String password);
 

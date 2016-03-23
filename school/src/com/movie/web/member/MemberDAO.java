@@ -2,7 +2,7 @@ package com.movie.web.member;
 
 public interface MemberDAO {
 
-	public String insert(MemberBean member);
+	public int insert(MemberBean member);
 
 	public MemberBean selectById(String id, String password);
 

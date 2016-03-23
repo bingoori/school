@@ -28,16 +28,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public String insert(MemberBean member) {
+	public int insert(MemberBean member) {
+		
+		int result = 0;
 		try {
-			String sql = " INSERT INTO Member(id,name,password,addr,birth) VALUES(?,?,?,?,?)";
+			String sql = " INSERT INTO Member(id,password,name,addr,birth) VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getAddr());
 			pstmt.setInt(5, member.getBirth());
-			pstmt.executeUpdate();
+			
+			result = pstmt.executeUpdate();
+			
 			conn.commit();
 			/*
 			 * create table Grade( hak number PRIMARY KEY, id VARCHAR2(30) NOT
@@ -54,10 +58,11 @@ public class MemberDAOImpl implements MemberDAO {
 			 */
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
 		} catch (Exception e) {
-			System.out.println("selectByName에서 에러 발생");
+			System.out.println("insert()에서 에러 발생");
 			e.printStackTrace();
 		}
-		return "Insert Success";
+		System.out.println("회원가입 성공 여부 "+result);
+		return result;
 	}
 
 	@Override

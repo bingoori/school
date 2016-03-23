@@ -7,6 +7,7 @@ CREATE TABLE Member(
 	birth NUMBER	
 );
 
+
 SELECT * FROM Member;
 INSERT INTO Member(id,password,name,addr,birth) 
 VALUES ('hong','1','홍길동','서울',800101);
