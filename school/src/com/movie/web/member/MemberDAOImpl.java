@@ -39,10 +39,9 @@ public class MemberDAOImpl implements MemberDAO {
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getAddr());
 			pstmt.setInt(5, member.getBirth());
-			
 			result = pstmt.executeUpdate();
 			
-			conn.commit();
+      	
 			/*
 			 * create table Grade( hak number PRIMARY KEY, id VARCHAR2(30) NOT
 			 * NULL, java number, sql number, jsp number, spring number );

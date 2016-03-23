@@ -5,7 +5,7 @@
 			<h2 class="text-center">회원가입</h2>
 		</div>
 		<div class="joinCenter row">
-			<form action="${context}/member/join" method="post" name="joinForm" class="form-horizontal">
+			<form action="${context}/member/join.do" method="post" name="joinForm" class="form-horizontal">
 				<fieldset class="joinField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>
@@ -22,7 +22,7 @@
 					<div class="form-group">
 						<label for="input_pw_check" class="col-sm-4 control-label">비밀번호 확인</label>
 						<div class="col-sm-4">
-							<input type="password" class="form-control" name="passwordCheck" id="passwordCheck" placeholder="비밀번호를 확인하세요"/>
+							<input type="password" class="form-control" name="passwordCheck" id="passwordCheck" placeholder="비밀번호를 확인하세요" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -40,7 +40,7 @@
 					<div class="form-group">
 						<label for="input_name" class="col-sm-4 control-label">생년월일</label>
 					 	<div class="col-sm-4">
-							<input type="date" class="form-control" id="birth" name="birth" placeholder="생년월일을 입력하세요"/>
+							<input type="text" class="form-control" id="birth" name="birth" placeholder="생년월일을 입력하세요"/>
 						</div>
 					</div>
 					<div class="input_button text-center">
