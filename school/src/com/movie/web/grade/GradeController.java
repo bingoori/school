@@ -18,17 +18,18 @@ import com.movie.web.global.CommandFactory;
 @WebServlet("/grade/my_grade.do")
 public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private	GradeService service = GradeServiceImpl.getService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dis = null;
-		GradeService service = new GradeServiceImpl();
 
 		String path = request.getServletPath();// 서블릿에서 전달한 action path
 		String directory = path.split("/")[1];
 		String action = path.split("/")[2].split("[.]")[0];
 		Command command = CommandFactory.createCommand(directory, action);
 		switch (action) {
+		
 		case "my_grade":
 			request.setAttribute("score", service.getGradeById(request.getParameter("id")));
 			// command = CommandFactory.createCommand(directory, "main");

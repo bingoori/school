@@ -16,6 +16,7 @@ import com.movie.web.global.CommandFactory;
 		"/member/login.do" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private MemberService service = MemberServiceImpl.getService();
 
 	// 페이지 이동시에는 doGet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +24,7 @@ public class MemberController extends HttpServlet {
 		MemberBean mBean = new MemberBean();
 
 		Command command = new Command();
-		MemberService service = new MemberServiceImpl();
+		
 		String id = "", password = "";
 		String path = request.getServletPath();
 		// String queryString = " ";

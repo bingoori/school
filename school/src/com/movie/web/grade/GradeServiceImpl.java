@@ -10,7 +10,12 @@ public class GradeServiceImpl implements GradeService {
 	// 멤버 필드
 	// 속성을 모아놓은곳 (Bean)
 	private ArrayList<GradeBean> gradeList;
-	private GradeDAO dao = new GradeDAOImpl();
+	private GradeDAO dao = GradeDAOImpl.getInstance();
+	private static GradeService service = new GradeServiceImpl();
+	
+	public static GradeService getService() {
+		return service;
+	}
 
 	// Vector<GradeBean> gradeList = new Vector<GradeBean>(); //인스턴스변수
 	public GradeServiceImpl() {

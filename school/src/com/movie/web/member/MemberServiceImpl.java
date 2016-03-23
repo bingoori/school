@@ -5,8 +5,12 @@ import java.util.HashMap;
 public class MemberServiceImpl implements MemberService {
 
 	private HashMap<String, MemberBean> map; // Bean객체를 키값으로 지정
-	private MemberBean memberBean;
-	private MemberDAO dao = new MemberDAOImpl();
+	private MemberDAO dao = MemberDAOImpl.getInstatnce();
+    private static MemberService service = new MemberServiceImpl();
+    
+	public static MemberService getService() {
+		return service;
+	}
 
 	public MemberServiceImpl() {
 		map = new HashMap<String, MemberBean>();
@@ -14,9 +18,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String join(MemberBean member) {
-		// 회원가입
-		map.put(member.getId(), member);
-		return member.getId();
+		
+		return dao.insert(member);
 	}
 
 	@Override
@@ -46,13 +49,12 @@ public class MemberServiceImpl implements MemberService {
 			map.remove(id);
 			return "회원 탈퇴 하였습니다";
 		}
-
 		return "패스워드 틀렸습니다.";
 	}
 
 	@Override
 	public MemberBean detail(String id) {
-		System.out.println("detail@@@@  "+id);
+		System.out.println("detail@@@@  " + id);
 		return dao.selectMember(id);
 	}
 
