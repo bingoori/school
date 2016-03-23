@@ -15,7 +15,7 @@ private static AdminService service = new AdminServiceImpl();
 	@Override
 	public List<GradeMemberBean> getMemberList() {
 		
-		return null;
+		return dao.getMemberList();
 	}
 
 	@Override

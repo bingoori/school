@@ -2,6 +2,7 @@ package com.movie.web.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +14,12 @@ import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
+import com.movie.web.grade.GradeMemberBean;
 
 /**
  * Servlet implementation class AdminController
  */
-@WebServlet("/member/admin_form.do")
+@WebServlet({"/member/admin_form.do","/member/admin_list.do","/grade/grade_addform.do"})
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private AdminService service = AdminServiceImpl.getService();
@@ -25,6 +27,7 @@ public class AdminController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("관리자 화면");
 		Command command = new Command();
+		List<GradeMemberBean> arrList = new ArrayList<GradeMemberBean>();
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
 		command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 		switch (arrStr.get(1)) {
@@ -32,11 +35,19 @@ public class AdminController extends HttpServlet {
 			System.out.println("====  관리자화면 ===========");
 			command = CommandFactory.createCommand(arrStr.get(0), "admin");
 			break;
+		case "admin_list":
+			arrList = service.getMemberList();
+			request.setAttribute("totalScore", arrList);
+			command = CommandFactory.createCommand("grade", "grade_list");
+			break;
+		case "grade_add":
+			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 
+		break;
+			
 		default:
 			break;
 		}
-		
 		System.out.println("오픈될 페이지 :" + command.getView());
 		DispatcherServlet.dispatcher(request, response, command.getView());
 		
