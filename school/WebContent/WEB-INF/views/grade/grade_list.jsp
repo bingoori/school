@@ -3,7 +3,7 @@
 
 <div>
 	<jsp:include page="../global/header.jsp" />
-
+<form action="${context}/member/admin_form.do">
 	<table cellpadding="3" cellspacing="3" border="1">
 
 		<tr>
@@ -31,6 +31,9 @@
 			</tr>
 			</c:forEach>
 	</table>
+	<div>
+	<input type="submit" value="되돌아가기" /></div>
+</form>
 
 
 	<jsp:include page="../global/footer.jsp" />

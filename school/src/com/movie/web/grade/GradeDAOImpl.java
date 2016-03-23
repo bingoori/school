@@ -250,7 +250,7 @@ public class GradeDAOImpl implements GradeDAO {
 			// SELECT * FROM GradeMember WHERE hak = 9000127;
 			while (rs.next()) {
 				grade.setId("id");
-				grade.setHak(rs.getInt("hak"));
+				grade.setHak(rs.getInt("score_seq"));
 				grade.setJava(rs.getInt("java"));
 				grade.setJsp(rs.getInt("jsp"));
 				grade.setSpring(rs.getInt("spring"));

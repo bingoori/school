@@ -35,5 +35,5 @@ SELECT  * FROM Grade;
 drop table Grade cascade constraints;
  truncate table Grade;
  
- delete from Grade where id ='choi';
+ delete from Grade where score_seq =7;
  
