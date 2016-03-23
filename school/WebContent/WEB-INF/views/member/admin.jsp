@@ -6,9 +6,10 @@
 		<h2 class="text-center">관리자 화면</h2>
 	</div>
 	 <h1>관리자 화면</h1>
-	</fieldset>
-	</form>
-	
+<div style="margin-left: 43.5%;">
+   <a href="${context}/member/admin_list.do">회원 정보 리스트</a><br/>
+   <a href="${context}/grade/grade_addform.do">회원 정보 추가</a>
+</div>
 
 		<jsp:include page="../global/footer.jsp" />
 </div>
