@@ -51,10 +51,10 @@
 	<div class="input_button text-center">
 		<form action="${context}/grade/my_grade.do">
 			<input type="submit" id="updateButton" class="btn btn-primary"
-				value="성적보기" /> <input type="hidden" id="id" name="id"
+				value="성적" /> <input type="hidden" id="id" name="id"
 				value="${member.id}" />
 		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary"
-			value="수정화면으로 이동" /> <input type="hidden" id="id" name="id"
+			value="수정" /> <input type="hidden" id="id" name="id"
 			value="${member.id}" />
 			</form>
 		

@@ -5,7 +5,7 @@
 			<h2 class="text-center">회원 정보 수정</h2>
 		</div>
 		<div class="updateCenter row">
-			<form action="${context}/member/login.do"  name="updateForm" class="form-horizontal">
+			<form action="${context}/member/update.do" method="post" name="updateForm" class="form-horizontal">
 				<fieldset class="updateField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>

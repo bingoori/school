@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
+import com.movie.web.global.DispatcherServlet;
 
 /**
  * Servlet implementation class GradeController
@@ -34,15 +35,11 @@ public class GradeController extends HttpServlet {
 			request.setAttribute("score", service.getGradeById(request.getParameter("id")));
 			// command = CommandFactory.createCommand(directory, "main");
 			command = CommandFactory.createCommand(directory, "myGrade");
-			dis = request.getRequestDispatcher(command.getView());
-			// getRequestDispatcher 는 페이지 이동하는 함수
-			// request,response 는 세션이나 객체처리된 값들을 전달한다.
-			dis.forward(request, response);
 			break;
-
 		default:
 			break;
 		}
+		DispatcherServlet.dispatcher(request, response, command.getView());
 
 	}
 

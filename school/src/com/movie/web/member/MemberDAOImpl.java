@@ -72,7 +72,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean selectMember(String id) {
-		System.out.println("@@@@  " + id + "  @@@@");
 		MemberBean temp = new MemberBean();
 		try {
 			stmt = conn.createStatement();
@@ -96,15 +95,29 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberBean update(String id, String string, int i, String string2) {
-		// TODO Auto-generated method stub
-		return null;
+	public int update(String id,String password, String addr) {
+		int result = 0;
+		try {
+			String sql = " UPDATE Member SET password = ? , addr = ?  WHERE id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, password);
+			pstmt.setString(2, addr);
+			pstmt.setString(3, id);
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			System.out.println("insert()에서 에러 발생");
+			e.printStackTrace();
+		}
+		System.out.println("회원가입 성공 여부 "+result);
+		return result;
 	}
 
 	@Override
-	public String delete(String id, int password) {
+	public int delete(String id, int password) {
 		// TODO Auto-generated method stub
-		return null;
+		return 1;
 	}
 
 	@Override

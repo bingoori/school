@@ -6,13 +6,13 @@ public interface MemberService {
 
 	public int join(MemberBean member);
 
-	public MemberBean login(String id, String password);
+	public MemberBean login(String id);
 
 	public MemberBean detail(String id);
 
-	public MemberBean update(String id, String string, int i, String string2);
+	public int update(String id, String password, String addr);
 
-	public String remove(String id, int password);
+	public int remove(String id, int password);
 	
 	public boolean isMember(String id,String password);
 }

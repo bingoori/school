@@ -16,7 +16,7 @@ import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
 
 @WebServlet({ "/member/update_form.do", "/member/login_form.do", "/member/join_form.do", "/member/join.do",
-		"/member/login.do" })
+		"/member/login.do", "/member/update.do" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService service = MemberServiceImpl.getService();
@@ -38,7 +38,7 @@ public class MemberController extends HttpServlet {
 			System.out.println("====  로그인 ===========");
 			System.out.println(request.getParameter("id") + "" + request.getParameter("password") + "@@@@@");
 			if (service.isMember(request.getParameter("id"), request.getParameter("password")) == true) {
-				mBean = service.login(request.getParameter("id"), request.getParameter("password"));
+				mBean = service.login(request.getParameter("id"));
 				request.setAttribute("member", mBean);
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			} else {
@@ -60,7 +60,7 @@ public class MemberController extends HttpServlet {
 			break;
 		}
 		System.out.println("오픈될 페이지 :" + command.getView());
-		DispatcherServlet.dispatcher(request, response, command);
+		DispatcherServlet.dispatcher(request, response, command.getView());
 	}
 
 	// 페이지
@@ -86,12 +86,24 @@ public class MemberController extends HttpServlet {
 				command = CommandFactory.createCommand(arrStr.get(0), "join_form");
 			}
 			break;
-
+		case "update":
+			
+			if (service.update(request.getParameter("id"), request.getParameter("password"),
+				request.getParameter("addr")) == 1) {
+				mBean = service.login(request.getParameter("id"));
+				request.setAttribute("member", mBean);
+				command = CommandFactory.createCommand(arrStr.get(0), "detail");
+			}else
+			{
+				command = CommandFactory.createCommand(arrStr.get(0), "update_form");
+			}
+			break;
+		
 		default:
 			break;
 		}
 		System.out.println("오픈될 페이지 :" + command.getView());
-		DispatcherServlet.dispatcher(request, response, command);
+		DispatcherServlet.dispatcher(request, response, command.getView());
 
 	}
 
