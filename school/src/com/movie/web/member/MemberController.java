@@ -3,7 +3,6 @@ package com.movie.web.member;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +15,7 @@ import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
 
 @WebServlet({ "/member/update_form.do", "/member/login_form.do", "/member/join_form.do", "/member/join.do",
-		"/member/login.do", "/member/update.do" })
+		"/member/login.do", "/member/update.do", "/member/delete.do" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService service = MemberServiceImpl.getService();
@@ -31,9 +30,7 @@ public class MemberController extends HttpServlet {
 		// str[1] = action;
 		command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 		switch (arrStr.get(1)) {
-		case "join":
-
-			break;
+	
 		case "login":
 			System.out.println("====  로그인 ===========");
 			System.out.println(request.getParameter("id") + "" + request.getParameter("password") + "@@@@@");
@@ -87,21 +84,30 @@ public class MemberController extends HttpServlet {
 			}
 			break;
 		case "update":
-			
 			if (service.update(request.getParameter("id"), request.getParameter("password"),
-				request.getParameter("addr")) == 1) {
+					request.getParameter("addr")) == 1) {
 				mBean = service.login(request.getParameter("id"));
 				request.setAttribute("member", mBean);
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
-			}else
-			{
+			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "update_form");
 			}
 			break;
-		
+		case "delete":
+			System.out.println("@@@@@delete@@@@@");
+			int result = service.delete(request.getParameter("id"));
+			System.out.println(result);
+			if (result == 1) {
+				command = CommandFactory.createCommand(arrStr.get(0), "login_form");
+
+			} else {
+				command = CommandFactory.createCommand(arrStr.get(0), "detail");
+			}
+
 		default:
 			break;
 		}
+
 		System.out.println("오픈될 페이지 :" + command.getView());
 		DispatcherServlet.dispatcher(request, response, command.getView());
 

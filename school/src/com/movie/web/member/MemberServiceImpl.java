@@ -38,9 +38,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int remove(String id, int password) {
-		// 회원 삭제
-		return 1;
+	public int delete(String id) {
+		
+		return dao.delete(id);
 	}
 
 	@Override

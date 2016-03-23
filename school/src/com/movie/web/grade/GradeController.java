@@ -1,6 +1,7 @@
 package com.movie.web.grade;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 import com.movie.web.global.DispatcherServlet;
+import com.movie.web.global.Separate;
 
 /**
  * Servlet implementation class GradeController
@@ -23,18 +25,17 @@ public class GradeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dis = null;
+		
 
-		String path = request.getServletPath();// 서블릿에서 전달한 action path
-		String directory = path.split("/")[1];
-		String action = path.split("/")[2].split("[.]")[0];
-		Command command = CommandFactory.createCommand(directory, action);
-		switch (action) {
+		Command command = new Command();
+		ArrayList<String> arrStr = Separate.getValidityUrl(request);
+		 command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
+		switch (arrStr.get(1)) {
 		
 		case "my_grade":
 			request.setAttribute("score", service.getGradeById(request.getParameter("id")));
 			// command = CommandFactory.createCommand(directory, "main");
-			command = CommandFactory.createCommand(directory, "myGrade");
+			command = CommandFactory.createCommand(arrStr.get(0), "myGrade");
 			break;
 		default:
 			break;

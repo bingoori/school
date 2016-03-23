@@ -48,18 +48,21 @@
 	</div>
 	</fieldset>
 	</form>
+	
 	<div class="input_button text-center">
 		<form action="${context}/grade/my_grade.do">
-			<input type="submit" id="updateButton" class="btn btn-primary"
-				value="성적" /> <input type="hidden" id="id" name="id"
-				value="${member.id}" />
-		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary"
-			value="수정" /> <input type="hidden" id="id" name="id"
-			value="${member.id}" />
-			</form>
 		
+		<input type="submit" id="updateButton" class="btn btn-primary" value="성적" /> 
+		<input type="hidden" id="id" name="id" value="${member.id}" />
+		
+		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary" value="수정" /> 
+		<input type="hidden" id="update" name="update" value="${member.id}" />
+		
+		<input type="submit" formmethod="post" formaction="${context}/member/delete.do" id="deleteButton" class="btn btn-primary" value="삭제" /> 
+		<input type="hidden" id="delete" name="delete" value="${member.id}" />
+		
+		</form>
+			
 	</div>
-	
-	<%-- <form action="${context}/member/update_form.do"> --%>
-	
+		<jsp:include page="../global/footer.jsp" />
 </div>

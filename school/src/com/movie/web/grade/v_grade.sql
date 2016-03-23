@@ -1,7 +1,7 @@
 CREATE OR REPLACE VIEW GradeMember
 AS
 SELECT 
-g.hak AS hak,
+g.score_seq AS score_seq,
 g.id AS id,
 g.java AS java,
 g.jsp AS jsp,

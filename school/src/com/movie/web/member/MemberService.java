@@ -12,7 +12,7 @@ public interface MemberService {
 
 	public int update(String id, String password, String addr);
 
-	public int remove(String id, int password);
+	public int delete(String id);
 	
 	public boolean isMember(String id,String password);
 }

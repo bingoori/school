@@ -31,5 +31,5 @@ SELECT * FROM Member where id = 'woo';
 
 SELECT * FROM Member WHERE id ='woo';
  delete from Member where id ='bingoori';
-
+DELETE  FROM Member WHERE id = 'woo';
 truncate table Member;
