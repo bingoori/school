@@ -19,7 +19,7 @@ import com.movie.web.grade.GradeMemberBean;
 /**
  * Servlet implementation class AdminController
  */
-@WebServlet({"/member/admin_form.do","/member/admin_list.do","/grade/grade_addform.do"})
+@WebServlet({"/member/grade_add.do","/member/admin_form.do","/member/admin_list.do","/grade/grade_addform.do"})
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private AdminService service = AdminServiceImpl.getService();
@@ -40,10 +40,12 @@ public class AdminController extends HttpServlet {
 			request.setAttribute("totalScore", arrList);
 			command = CommandFactory.createCommand("grade", "grade_list");
 			break;
+		case "grade_addform":
+			command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
+			break;
 		case "grade_add":
-			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
-
-		break;
+			command = CommandFactory.createCommand(arrStr.get(0), "admin");
+			break;
 			
 		default:
 			break;
