@@ -5,7 +5,11 @@
 	<jsp:include page="../global/header.jsp" />
 
 	<c:forEach var="score" items="${requestScope['totalScore']}">
-		<c:out value="${score.id}" />
+	<form>
+	<tr>
+		<td><c:out value="${score.id}" /></td>
+	</tr>
+	
 		<c:out value="${score.password}" />
 		<c:out value="${score.name}" />
 		<c:out value="${score.addr}" />
@@ -16,5 +20,6 @@
 		<c:out value="${score.spring}" />
 		<br>
 	</c:forEach>
+	</form>
 	<jsp:include page="../global/footer.jsp" />
 </div>

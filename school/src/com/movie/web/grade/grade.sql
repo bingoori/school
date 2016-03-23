@@ -25,6 +25,10 @@ INSERT INTO Grade(score_seq,id,java,sql,jsp,spring)
 VALUES (score_seq.nextval,'choi',50,50,50,50);
 INSERT INTO Grade(score_seq,id,java,sql,jsp,spring) 
 VALUES (score_seq.nextval,'choi2',40,40,40,40);
+
+
+INSERT INTO Grade(score_seq,id,java,sql,jsp,spring) 
+VALUES (score_seq.nextval,'choi2',40,40,40,40);
 update Grade set java = 20, sql = 30, jsp = 40, spring = 50
 where hak = 9000002;
 SELECT  * FROM Grade;

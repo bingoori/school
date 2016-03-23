@@ -14,6 +14,7 @@ import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
+import com.movie.web.grade.GradeBean;
 import com.movie.web.grade.GradeMemberBean;
 
 /**
@@ -44,7 +45,19 @@ public class AdminController extends HttpServlet {
 			command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
 			break;
 		case "grade_add":
-			command = CommandFactory.createCommand(arrStr.get(0), "admin");
+		   GradeBean gBean = new GradeBean();
+		    gBean.setId(request.getParameter("id"));
+		    gBean.setJava(Integer.parseInt(request.getParameter("java")));
+		    gBean.setJsp(Integer.parseInt(request.getParameter("jsp")));
+		    gBean.setSql(Integer.parseInt(request.getParameter("sql")));
+		    gBean.setSpring(Integer.parseInt(request.getParameter("spring")));
+		    if(service.addScore(gBean)==1){
+		    	command = CommandFactory.createCommand(arrStr.get(0), "admin");		    	
+		    }else{
+		    	command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
+		    }
+
+			
 			break;
 			
 		default:
