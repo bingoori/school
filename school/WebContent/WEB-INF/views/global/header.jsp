@@ -2,39 +2,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8" />
-   <title>성적관리</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8" />
+	<title>성적관리</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <header style="width:100%;margin: 0 auto">
-<%-- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-  
-     <h3 style="color: white; text-align: center;">
-        <a href="${context}/global/main.do">한빛 성적 관리</a>
-     </h3>
-  </div>
-</nav> --%>
-<h3 style="color: white; text-align: center;">
-        <a href="${context}/global/main.do">한빛 성적 관리</a>
-     </h3>
+ <h3 style="color: white; text-align: center;">
+  		<a href="${context}/global/main.do">한빛 성적 관리</a>
+  	</h3>
 <ul class="nav nav-pills">
+ 
   <li role="presentation" class="dropdown" style="margin-left: 100px">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
       자바스크립트 <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="${context}/js/hello.do"></a>자바스크립트 소개</li>
+    	<li><a href="${context}/js/hello.do">자바스크립트 소개</a></li>
+    	<li><a href="${context}/js/var.do">변수</a></li>
+    	<li><a href="${context}/js/operator.do">연산자</a></li>
+    	<li><a href="${context}/js/function.do">함수</a></li>
+    	<li><a href="${context}/js/object.do">객체</a></li>
+    	<li><a href="${context}/js/bom.do">BOM</a></li>
+    	<li><a href="${context}/js/dom.do">DOM</a></li>
+    	<li><a href="${context}/js/form.do">form 태그</a></li>
+    	<li><a href="${context}/js/closure.do">클로저</a></li>
+    	<li><a href="${context}/js/pattern.do">패턴</a></li>
     </ul>
   </li>
 </ul>
-
-
 
 
 </header>

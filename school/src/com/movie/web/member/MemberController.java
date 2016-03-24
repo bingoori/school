@@ -21,8 +21,9 @@ public class MemberController extends HttpServlet {
 	private MemberService service = MemberServiceImpl.getService();
 
 	// 페이지 이동시에는 doGet
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		MemberBean mBean = new MemberBean();
 		Command command = new Command();
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
@@ -52,24 +53,6 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("member", mBean);
 			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
-		default:
-			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
-			break;
-		}
-		System.out.println("오픈될 페이지 :" + command.getView());
-		DispatcherServlet.dispatcher(request, response, command.getView());
-	}
-
-	// 페이지
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		MemberBean mBean = new MemberBean();
-		Command command = new Command();
-		ArrayList<String> arrStr = Separate.getValidityUrl(request);
-		// str[0] = directory
-		// str[1] = action;
-		command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
-		switch (arrStr.get(1)) {
 		case "join":
 			mBean.setId(request.getParameter("id"));
 			mBean.setPassword(request.getParameter("password"));
@@ -103,14 +86,18 @@ public class MemberController extends HttpServlet {
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			}
-
 		default:
+			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
 		}
-
 		System.out.println("오픈될 페이지 :" + command.getView());
 		DispatcherServlet.dispatcher(request, response, command.getView());
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
+
+
 
 }
