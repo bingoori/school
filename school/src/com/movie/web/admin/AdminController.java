@@ -14,12 +14,13 @@ import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
 import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
+import com.movie.web.grade.GradeBean;
 import com.movie.web.grade.GradeMemberBean;
 
 /**
  * Servlet implementation class AdminController
  */
-@WebServlet({"/member/admin_form.do","/member/admin_list.do","/grade/grade_addform.do"})
+@WebServlet({"/member/grade_add.do","/member/admin_form.do","/grade/admin_list.do","/grade/grade_addform.do"})
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private AdminService service = AdminServiceImpl.getService();
@@ -40,10 +41,24 @@ public class AdminController extends HttpServlet {
 			request.setAttribute("totalScore", arrList);
 			command = CommandFactory.createCommand("grade", "grade_list");
 			break;
+		case "grade_addform":
+			command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
+			break;
 		case "grade_add":
-			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
+		   GradeBean gBean = new GradeBean();
+		    gBean.setId(request.getParameter("id"));
+		    gBean.setJava(Integer.parseInt(request.getParameter("java")));
+		    gBean.setJsp(Integer.parseInt(request.getParameter("jsp")));
+		    gBean.setSql(Integer.parseInt(request.getParameter("sql")));
+		    gBean.setSpring(Integer.parseInt(request.getParameter("spring")));
+		    if(service.addScore(gBean)==1){
+		    	command = CommandFactory.createCommand(arrStr.get(0), "admin");		    	
+		    }else{
+		    	command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
+		    }
 
-		break;
+			
+			break;
 			
 		default:
 			break;

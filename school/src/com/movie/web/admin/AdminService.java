@@ -2,10 +2,11 @@ package com.movie.web.admin;
 
 import java.util.List;
 
+import com.movie.web.grade.GradeBean;
 import com.movie.web.grade.GradeMemberBean;
 
 public interface AdminService {
 	public List<GradeMemberBean> getMemberList();
-	public int addScore(GradeMemberBean bean);
+	public int addScore(GradeBean gBean);
 
 }

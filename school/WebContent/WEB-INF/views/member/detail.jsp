@@ -60,7 +60,7 @@
 		
 		<input type="submit" formmethod="post" formaction="${context}/member/delete.do" id="deleteButton" class="btn btn-primary" value="삭제" /> 
 		<input type="hidden" id="delete" name="delete" value="${member.id}" />
-		
+		<input type="submit" value="홈으로" formaction="${context}/global/main.do" class="btn btn-primary"/>
 		</form>
 			
 	</div>
