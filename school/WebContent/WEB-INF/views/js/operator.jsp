@@ -171,12 +171,14 @@
 
 		},
 		gugudan : function() {
-			var i = 1, j = Number(prompt("출력할 단 입력"));
-			document.write(i + "단 : <br/>");
-			for (i = 1; i < 10; i++) {
-				document.write(j + "*" + i + "=" + (j * i));
-				document.write("<br/>   ");
+			var i=0,j=0,hap=0,result='' ;
+			j = Number(prompt('단을 입력'));
+			for (var i=1; i <= 9; i++) {
+				// 7단 구구단을 출력하시오
+				hap = j*i
+				result += (j+'*'+i+'='+ hap)+'<br/>' ;
 			}
+			document.getElementById("result").innerHTML = result;
 		},
 		sum1to100 : function() {
 			var sum = 0, i = 0;

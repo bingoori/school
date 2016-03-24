@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatcherServlet {
 	public static void dispatcher(HttpServletRequest request, HttpServletResponse response,String view){
 		try {
+			System.out.println(view+"viewviewviewview@@@@@");
 			RequestDispatcher dis = request.getRequestDispatcher(view);
 			dis.forward(request, response);
 		} catch (Exception e) {
