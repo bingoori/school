@@ -10,7 +10,6 @@
 			<td>전체회원 목록보기</td>
 			<td>
 				<div id='totalList' style="display: none;">
-
 					<jsp:include page="../grade/grade_list.jsp" />
 				</div>
 			</td>
@@ -19,7 +18,7 @@
 			<td>ID 로 회원검색</td>
 			<td>
 			<div id ='showById'  style="display: none;">
-			<input type="text" id="showById" name="searchById" />
+			<!-- <input type="text" id="showById" name="searchById" /> -->
 			</div>
 			</td>
 		</tr>
@@ -44,7 +43,7 @@
 			<td colspan="2">
 				<button onclick="view.showList()">전체 회원 목록</button><br/>
 				<button onclick="view.showAdd()">학생 점수 입력</button><br/>
-				<button onclick=>아이디로 회원 검색</button><br/>
+				<button onclick="view.showById()">아이디로 회원 검색</button><br/>
 				<button onclick="view.showByName()">이름으로 회원 검색</button><br/>
 				<button onclick="view.hide()">닫기</button>
 			</td>
@@ -67,7 +66,7 @@
 			},
 		showById : function(methodType) {
 			document.getElementById('showById').style.display = '';
-			document.getElementById('showById').action="${context}/admin/searchById.do";
+			document.getElementById('showById').action='${context}/admin/searchById.do';
 			document.getElementById('showById').method=methodType;
 			document.getElementById("showById").submit();
 			
