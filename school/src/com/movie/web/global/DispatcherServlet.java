@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DispatcherServlet {
-	public static void dispatcher(HttpServletRequest request, HttpServletResponse response,String view){
+	public static void go(HttpServletRequest request, HttpServletResponse response,String view){
 		try {
 			System.out.println(view+"viewviewviewview@@@@@");
 			RequestDispatcher dis = request.getRequestDispatcher(view);

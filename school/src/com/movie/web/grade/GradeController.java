@@ -40,7 +40,7 @@ public class GradeController extends HttpServlet {
 		default:
 			break;
 		}
-		DispatcherServlet.dispatcher(request, response, command.getView());
+		DispatcherServlet.go(request, response, command.getView());
 
 	}
 

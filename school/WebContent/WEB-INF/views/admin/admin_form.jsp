@@ -2,7 +2,22 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="admin_header.jsp" />
 
- 
+ <div class="container" style="width: 1000px; margin: 0 auto;">
+	<div class="row display-table">
+		<div class="col-xs-12 col-sm-4 display-cell">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="dropdown active"><a onclick="admin.memberList()">전체학생 목록보기</a></li>
+				<li ><a onclick="admin.gradeList()">전체성적 목록보기</a></li>
+				<li ><a onclick="admin.searchById()">ID로 회원검색</a></li>
+				<li ><a onclick="admin.addScore()">학생 점수 입력</a></li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-8 display-cell" id="result"
+			style="border: 1px solid black; height: 500px">text</div>
+			<%-- <jsp:include page="member_list.jsp" /> --%>
+	</div>
+</div>
+
 <fieldset>
 	<legend>회원관리</legend>
 	<table class="table-condensed" style="width: 90%; margin-left: 50px">
@@ -10,7 +25,7 @@
 			<td>전체회원 목록보기</td>
 			<td>
 				<div id='totalList' style="display: none;">
-					<jsp:include page="../grade/grade_list.jsp" />
+					<jsp:include page="member_list.jsp" />
 				</div>
 			</td>
 		</tr>
@@ -52,7 +67,11 @@
 </fieldset> 
 
 <!-- "/grade/admin_list2.do" -->
+<script scr="$(context)/resources/js/attr.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	
+});
 	var view = {
 		
 		hide : function() {
@@ -84,9 +103,3 @@
 	}
 </script>
 
-<%-- <div style="margin-left: 43.5%;">
-   <a href="${context}/grade/admin_list.do">회원 정보 리스트</a><br/>
-   <a href="${context}/grade/grade_addform.do">회원 정보 추가</a><br/>
-   <a href="${context}/global/main.do">홈으로</a>
-   	
-</div> --%>

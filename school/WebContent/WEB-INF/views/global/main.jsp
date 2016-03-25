@@ -2,7 +2,7 @@
    pageEncoding="UTF-8"%>
 
 <jsp:include page="header.jsp" />
-<img src="${context}/img/main/mainImage.jpg" alt="" width="100%" height=
+<img src="${context}/resources/img/main/mainImage.jpg" alt="" width="100%" height=
  />
 <br />
 <div style="margin-left: 43.5%;">

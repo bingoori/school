@@ -4,6 +4,11 @@
 <div class="container" style="width: 1000px; margin: 0 auto;">
 	<div>
 	<h3>브라우저 객체 BOM</h3>
+	<!--
+	BOM 은 책한권
+	DOM 은 책의 한 페이지( 하나의 JSP파일)
+	모델 -> 기능과 속성 
+	 -->
 	<h4>Window</h4>
 	<ul>
 		<li>[1]대화창

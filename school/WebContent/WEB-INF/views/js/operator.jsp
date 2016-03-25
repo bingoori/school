@@ -17,6 +17,7 @@
 				<li class="dropdown active"><a onclick="opr.gugudan()">구구단</a></li>
 				<li class="dropdown active"><a onclick="opr.sum1to100()">1to100</a></li>
 				<li class="dropdown active"><a onclick="opr.oddSum()">oddSum</a></li>
+				<li class="dropdown active"><a onclick="liveScript()">라이브스크립트호출</a></li>
 			</ul>
 		</div>
 		<div class="col-xs-12 col-sm-8 display-cell" id="result"
@@ -26,7 +27,11 @@
 
 
 <script type="text/javascript">
+function liveScript() {
+	alert('라이브 스크립트 시절(객체기반언어가 아닌 시절)');
+}
 	var opr = {
+			
 		sysout : function() {
 
 			var arr = [ '사과', '배', '감', '귤' ];

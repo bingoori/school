@@ -91,7 +91,7 @@ public class MemberController extends HttpServlet {
 			break;
 		}
 		System.out.println("오픈될 페이지 :" + command.getView());
-		DispatcherServlet.dispatcher(request, response, command.getView());
+		DispatcherServlet.go(request, response, command.getView());
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -8,9 +8,9 @@
 
 	<div id="login">
 		<div class="loginTop text-center" >
-			<img src="${context}/img/member/loginform_image.jpg" border="0" height="160px" width="160px"/>
+			<img id = "loginform_image" src="${context}/resources/img/member/loginform_image.jpg" />
 		</div>
-		<form action="${context}/member/login.do" name="loginForm" class="form-horizontal">
+		<form class="form-horizontal">
 		<div class="loginCenter row" style="margin-left: 38%;">
 				<fieldset class="loginField">
 				
@@ -30,11 +30,28 @@
 				</fieldset>
 			
 		</div>
-		<div class="input_button text-center">
-			<input type="submit" id="loginButton" class="btn btn-primary" value ="로그인"/>
-			<input type="reset" id="joinButton" class="btn btn-primary" value ="취소"/>
+		<div class="input_button text-center" style="margin-left: 1%;">
+		<img id= "loginButton" src="${context}/resources/img/main/button.png" alt="" />
 		</div>
 		</form>
 	</div>
 </body>
+
+<script type="text/javascript">
+/* 	 $(document).ready(function() {
+		
+	}); */ 	
+	
+	$(function() {
+		$('#loginform_image').css('border','0').css('width','160px').css('height','160px');
+		$('#loginButton').css('width','400px');
+		$('#loginButton').click(function() {
+	$('form').attr('action','${context}/member/login.do').attr('method','post').submit();
+		
+	});
+	}); 
+	// 메인 메소드
+
+		
+</script>
 </html>
