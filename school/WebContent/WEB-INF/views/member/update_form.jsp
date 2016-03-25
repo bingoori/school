@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../global/header.jsp"/>
+<div>
 <div id="join">
 		<div class="updateTop">
 			<h2 class="text-center">회원 정보 수정</h2>
 		</div>
 		<div class="updateCenter row">
-			<form action="${context}/member/update.do" method="post" name="updateForm" class="form-horizontal">
+			<form >
 				<fieldset class="updateField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>
@@ -38,10 +39,22 @@
 						</div>
 					</div>
 					<div class="input_button text-center">
-						<input type="submit" id="updateButton" class="btn btn-primary" value ="수정"/>
-					</div>
-						
+				<button id="updateButton">수정</button>
+					</div>				
 				</fieldset>
 			</form>
 		</div>
 	</div>
+		<jsp:include page="../global/footer.jsp" />
+		<script type="text/javascript">
+	
+		$(function() {
+			$('form').addClass('form-horizontal');	
+			$('#updateButton').addClass('btn btn-primary');
+			$('#updateButton').click(function() {
+				$form.attr('action','${context}/member/update.do').attr('method','post').submit();		
+			});
+		
+		});
+		</script>
+</div>

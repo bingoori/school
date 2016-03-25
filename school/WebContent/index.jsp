@@ -9,11 +9,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
-	<img id="image" src="${context}/resources/img/main/loading-icon.gif" alt="" style="margin-left:35%; margin-top:10%;"/>
+	<img id="image" />
 </body>
 <script type="text/javascript">
 
 $(document).ready(function() {
+	$('img').attr('src','${context}/resources/img/main/loading-icon.gif').css('margin-left','35%').css('margin-top','10%');
 		location.href='${context}/global/main.do';
 });
 </script>

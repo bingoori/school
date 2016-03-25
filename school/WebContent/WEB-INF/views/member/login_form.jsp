@@ -45,7 +45,7 @@
 	$(function() {
 		$('#loginform_image').css('border','0').css('width','160px').css('height','160px');
 		$('#loginButton').css('width','400px');
-		$('#loginButton').click(function() {
+	$('#loginButton').click(function() {
 	$('form').attr('action','${context}/member/login.do').attr('method','post').submit();
 		
 	});

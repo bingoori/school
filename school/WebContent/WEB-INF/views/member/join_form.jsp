@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../global/header.jsp"/>
+<div>
 <div id="join">
 		<div class="joinTop">
 			<h2 class="text-center">회원가입</h2>
 		</div>
 		<div class="joinCenter row">
-			<form action="${context}/member/join.do" method="post" name="joinForm" class="form-horizontal">
+			<form >
 				<fieldset class="joinField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>
@@ -44,11 +45,28 @@
 						</div>
 					</div>
 					<div class="input_button text-center">
-						<input type="submit" id="joinButton" class="btn btn-primary" value ="회원가입"/>
-						<input type="reset" id="cancleButton" class="btn btn-primary" value ="취소"/>
-					</div>
-						
+					<button id="joinButton" >확인</button>
+					<button id="resetButton" >취소</button>
+					</div>					
 				</fieldset>
 			</form>
 		</div>
 	</div>
+	<jsp:include page="../global/footer.jsp" />
+	</div>
+	<script type="text/javascript">
+	$(function() {
+		var $form = $('form');
+		$form.addClass('form-horizontal');			
+	
+		$('#resetButton').addClass('btn btn-primary').click(function() {
+			$form.attr('type','reset').submit();		
+		});
+		$('#joinButton').addClass('btn btn-primary').click(function() {
+			$form.attr('action','${context}/member/join.do').attr('method','post').submit();		
+		});
+	
+	});
+	
+	
+	</script>

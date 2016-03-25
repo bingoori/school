@@ -86,8 +86,9 @@ public class MemberController extends HttpServlet {
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			}
+			break;
 		default:
-			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
+			//command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
 		}
 		System.out.println("오픈될 페이지 :" + command.getView());

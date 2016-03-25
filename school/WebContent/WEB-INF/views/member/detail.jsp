@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../global/header.jsp" />
+<div>
 <div id="join">
 	<div class="joinTop">
 		<h2 class="text-center">회원 상세 정보</h2>
 	</div>
 	<div class="joinCenter row">
-		<form action="${context}/member/update_form.do" name="updateForm"
-			class="form-horizontal">
+		<form>
 			<fieldset class="joinField">
 				<div class="form-group">
 					<label for="input_id" class="col-sm-4 control-label">아이디</label>
@@ -50,19 +50,46 @@
 	</form>
 	
 	<div class="input_button text-center">
-		<form action="${context}/grade/my_grade.do">
 		
-		<input type="submit" id="updateButton" class="btn btn-primary" value="성적" /> 
-		<input type="hidden" id="id" name="id" value="${member.id}" />
+		<button id = "gradeButton">성적</button>
+		<button id = "updateButton">수정</button>
+		<button id = "deleteButton">삭제</button>
+		<button id = "homeButton">홈</button>
 		
-		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary" value="수정" /> 
-		<input type="hidden" id="update" name="update" value="${member.id}" />
-		
-		<input type="submit" formmethod="post" formaction="${context}/member/delete.do" id="deleteButton" class="btn btn-primary" value="삭제" /> 
-		<input type="hidden" id="delete" name="delete" value="${member.id}" />
-		<input type="submit" value="홈으로" formaction="${context}/global/main.do" class="btn btn-primary"/>
-		</form>
-			
 	</div>
 		<jsp:include page="../global/footer.jsp" />
+</div>
+	<script type="text/javascript">
+	 
+
+	
+	$(function() {
+		var $form = $('form');
+		$form.addClass('form-horizontal');	
+		$('#gradeButton').addClass('btn btn-primary');
+		$('#updateButton').addClass('btn btn-primary');
+		$('#deleteButton').addClass('btn btn-primary');
+		$('#homeButton').addClass('btn btn-primary');
+		
+	
+		$('#gradeButton').click(function() {
+			location.href='${context}/grade/my_grade.do?id=${member.id}';	
+		});
+		$('#updateButton').click(function() {
+			location.href='${context}/member/update_form.do?id=${member.id}';		
+		});
+		$('#deleteButton').click(function() {
+			location.href='${context}/member/delete.do?id=${member.id}';		
+		});
+		$('#homeButton').click(function() {
+			location.href='${context}/global/main.do';		
+		});
+	
+
+	
+	});
+	
+	
+	</script>
+
 </div>
