@@ -52,7 +52,7 @@
 			$('form').addClass('form-horizontal');	
 			$('#updateButton').addClass('btn btn-primary');
 			$('#updateButton').click(function() {
-				$form.attr('action','${context}/member/update.do').attr('method','post').submit();		
+				$('form').attr('action','${context}/member/update.do').attr('method','post').submit();		
 			});
 		
 		});

@@ -88,9 +88,17 @@ public class MemberController extends HttpServlet {
 			}
 			break;
 		case "update":
+			System.out.println(request.getParameter("id")+""+ request.getParameter("password")+""+
+					request.getParameter("addr")+"laisdcuhasdc");
 			if (service.update(request.getParameter("id"), request.getParameter("password"),
 					request.getParameter("addr")) == 1) {
-				//session.setAttribute("member", service.login(request.getParameter("id")));
+				aBean.setId(request.getParameter("id"));
+				aBean.setPassword(request.getParameter("password"));
+				aBean.setName(request.getParameter("name"));
+				aBean.setAddr(request.getParameter("addr"));
+				aBean.setBirth(Integer.parseInt(request.getParameter("birth")));
+				aBean.setRole(null);
+				session.setAttribute("user", aBean);
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "update_form");
@@ -106,7 +114,7 @@ public class MemberController extends HttpServlet {
 			System.out.println(result);
 			if (result == 1) {
 				command = CommandFactory.createCommand(arrStr.get(0), "login_form");
-
+				session.invalidate();
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			}

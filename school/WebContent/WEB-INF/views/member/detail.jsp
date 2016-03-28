@@ -74,7 +74,7 @@
 			location.href='${context}/member/update_form.do?id=${sessionScope.user.id}';		
 		});
 		$('#deleteButton').click(function() {
-			location.href='${context}/member/delete.do';		
+			location.href='${context}/member/delete.do?id=${sessionScope.user.id}';		
 		});
 		$('#homeButton').click(function() {
 			location.href='${context}/global/main.do';		
