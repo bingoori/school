@@ -45,10 +45,6 @@ public class GradeController extends HttpServlet {
 		DispatcherServlet.go(request, response, command.getView());
 
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
+ 
 
 }
