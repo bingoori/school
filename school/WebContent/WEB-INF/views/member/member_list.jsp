@@ -1,55 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%--    <table>
-    	<tr>
-    		<th>아이디</th>
-    		<th>이름</th>
-    		<th>전공</th>
-    		<th>수강과목</th>
-    		<th>주소</th>
-    		<th>생년월일</th>
+	pageEncoding="UTF-8"%>
 
-    	</tr>
-    	<c:forEach var="member" items="${requestScope['totalScore']}">
-    	<tr>
-    		<td>${member.id}</td>
-    		<td>${member.name}</td>
-    		<td>${member.major}</td>
-    		<td>${member.subject}</td>
-    		<td>${member.addr}</td>
-    		<td>${member.birth}</td>
-    	</tr>
-    	</c:forEach>
-    </table>  --%>
- <div>
-	<table cellpadding="3" cellspacing="3" border="1" >
+<table id="member_list">
+	<tr>
+		<th>아이디</th>
+		<th>이름</th>
+		<!-- 	<th>전공</th>
+    		<th>수강과목</th> -->
+		<th>주소</th>
+		<th>생년월일</th>
 
+	</tr>
+	<c:forEach var="member" items="${requestScope['member']}">
 		<tr>
-			<th>아이디</th>
-			<th>비밀번호</th>
-			<th>이름</th>
-			<th>주소</th>
-			<th>생년월일</th>
-			<th>Java</th>
-			<th>Jsp</th>
-			<th>Sql</th>
-			<th>Spring</th>
+			<td>${member.id}</td>
+			<td>${member.name}</td>
+			<%-- 		<td>${member.major}</td>
+    		<td>${member.subject}</td> --%>
+			<td>${member.addr}</td>
+			<td>${member.birth}</td>
 		</tr>
-		<c:forEach var="score" items="${requestScope['totalScore']}">
-			<tr>
-				<td><c:out value="${score.id}" /></td>
-				<td><c:out value="${score.password}" /></td>
-				<td><c:out value="${score.name}" /></td>
-				<td><c:out value="${score.addr}" /></td>
-				<td><c:out value="${score.birth}" /></td>
-				<td><c:out value="${score.java}" /></td>
-				<td><c:out value="${score.jsp}" /></td>
-				<td><c:out value="${score.sql}" /></td>
-				<td><c:out value="${score.spring}" /></td>
-			</tr>
-			</c:forEach>
-	</table>
-	</div>
-	
+	</c:forEach>
+</table>
+<script>
+	$(function() {
+$('#member_list').css('border','1px solid black').css('width','100%').css('margin-top','100px');
+$('#member_list  tr').css('border','1px solid black');
+$('#member_list  tr  td').css('border','1px solid black').css('text-align','center');
+	});
+</script>
+
 

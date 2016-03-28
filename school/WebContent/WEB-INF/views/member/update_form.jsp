@@ -39,7 +39,7 @@
 						</div>
 					</div>
 					<div class="input_button text-center">
-				<button id="updateButton">수정</button>
+					<button id="updateButton">수정</button>
 					</div>				
 				</fieldset>
 			</form>

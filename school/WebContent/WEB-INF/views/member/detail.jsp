@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../global/header.jsp" />
-<div>
+	
+ <jsp:include page="../global/header.jsp" /> 
+
 <div id="join">
-	<div class="joinTop">       <!--      //sessionScope 는 생략 가능 -->
-		<h2 class="text-center">${sessionScope.user.name }회원 상세 정보</h2>
+	<div class="joinTop">      
+		<h2 class="text-center">${sessionScope.user.name}회원 상세 정보</h2>
 	</div>
 	<div class="joinCenter row">
 		<form>
-			<fieldset class="joinField">
 				<div class="form-group">
 					<label for="input_id" class="col-sm-4 control-label">아이디</label>
 					<div class="col-sm-4">
@@ -42,11 +42,10 @@
 					<label for="input_name" class="col-sm-4 control-label">생년월일</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="birth" name="birth"
-							value="${member.birth}" readonly />
+							value="${sessionScope.user.birth}" readonly />
 					</div>
 				</div>
 	</div>
-	</fieldset>
 	</form>
 	
 	<div class="input_button text-center">
@@ -57,11 +56,8 @@
 		<button id = "homeButton">홈</button>
 		
 	</div>
-		<jsp:include page="../global/footer.jsp" />
 </div>
 	<script type="text/javascript">
-	 
-
 	
 	$(function() {
 		var $form = $('form');
@@ -70,13 +66,12 @@
 		$('#updateButton').addClass('btn btn-primary');
 		$('#deleteButton').addClass('btn btn-primary');
 		$('#homeButton').addClass('btn btn-primary');
-		
-	
+			
 		$('#gradeButton').click(function() {
-			location.href='${context}/grade/my_grade.do?';	
+			location.href='${context}/grade/my_grade.do?id=${sessionScope.user.id}';	
 		});
 		$('#updateButton').click(function() {
-			location.href='${context}/member/update_form.do';		
+			location.href='${context}/member/update_form.do?id=${sessionScope.user.id}';		
 		});
 		$('#deleteButton').click(function() {
 			location.href='${context}/member/delete.do';		
@@ -92,4 +87,3 @@
 	
 	</script>
 
-</div>

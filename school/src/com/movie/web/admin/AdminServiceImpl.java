@@ -26,9 +26,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean getAdmin(String id, String pwd) {
+	public AdminBean getAdmin(AdminBean aBean) {
 		
-		return dao.SelectAdmin(id, pwd);
+		return dao.SelectAdmin(aBean);
 	}
 
 }

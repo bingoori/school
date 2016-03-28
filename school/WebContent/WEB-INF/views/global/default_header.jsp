@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <header style="width:100%;margin: 0 auto">
  <h3 style="color: white; text-align: center;">
   		<a href="${context}/global/main.do">한빛 성적 관리</a>
