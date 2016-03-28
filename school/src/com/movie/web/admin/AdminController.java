@@ -52,8 +52,6 @@ public class AdminController extends HttpServlet {
 			
 			System.out.println("로그인 성공");
 			session.setAttribute("user", temp);
-			request.setAttribute("totalScore", service.getMemberList());
-		
 			command = CommandFactory.createCommand(arrStr.get(0), "admin_form");
 		}else
 		{
@@ -77,11 +75,11 @@ public class AdminController extends HttpServlet {
 			}
 			*/
 			break;
-	 
+/*	 
 		case "admin_list":
 			request.setAttribute("totalScore", service.getMemberList());
 			command = CommandFactory.createCommand("grade", "grade_list");
-			break;
+			break;*/
 		case "grade_addform":
 			command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
 			break;
