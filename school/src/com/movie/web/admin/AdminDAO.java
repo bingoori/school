@@ -8,4 +8,5 @@ import com.movie.web.grade.GradeMemberBean;
 public interface AdminDAO {
 	public List<GradeMemberBean> getMemberList();
 	public int addScore(GradeBean bean);
+	public boolean SelectAdmin(String id, String pwd);
 }

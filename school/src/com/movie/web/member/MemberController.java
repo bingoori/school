@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.movie.web.global.Command;
 import com.movie.web.global.CommandFactory;
@@ -23,7 +24,8 @@ public class MemberController extends HttpServlet {
 	// 페이지 이동시에는 doGet
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
 		MemberBean mBean = new MemberBean();
 		Command command = new Command();
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
@@ -33,11 +35,10 @@ public class MemberController extends HttpServlet {
 		switch (arrStr.get(1)) {
 	
 		case "login":
-			System.out.println("====  로그인 ===========");
-			System.out.println(request.getParameter("id") + "" + request.getParameter("password") + "@@@@@");
+			System.out.println("====  로그인 성공 ===========");
 			if (service.isMember(request.getParameter("id"), request.getParameter("password")) == true) {
 				mBean = service.login(request.getParameter("id"));
-				request.setAttribute("member", mBean);
+				session.setAttribute("user", mBean);
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			} else {
 				System.out.println("==== 로그인 실패 =========");
@@ -49,8 +50,8 @@ public class MemberController extends HttpServlet {
 			break;
 		case "update_form":
 			System.out.println("==== update_form ====");
-			mBean = service.detail(request.getParameter("id"));
-			request.setAttribute("member", mBean);
+/*			mBean = service.detail(request.getParameter("id"));
+			request.setAttribute("member", mBean);*/
 			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
 		case "join":
@@ -68,13 +69,16 @@ public class MemberController extends HttpServlet {
 			break;
 		case "update":
 			if (service.update(request.getParameter("id"), request.getParameter("password"),
-					request.getParameter("addr")) == 1) {
-				mBean = service.login(request.getParameter("id"));
-				request.setAttribute("member", mBean);
+					request.getParameter("addr")) == 1) {		
+				session.setAttribute("member", service.login(request.getParameter("id")));
 				command = CommandFactory.createCommand(arrStr.get(0), "detail");
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "update_form");
 			}
+			break;
+		case "logout":
+			session.invalidate(); //세션 종료   ,  bom 이 상위 객체이므로  bom을 비우면 dom의 값도 날라감 
+			command = CommandFactory.createCommand(arrStr.get(0), "login_form");
 			break;
 		case "delete":
 			System.out.println("@@@@@delete@@@@@");
@@ -94,10 +98,7 @@ public class MemberController extends HttpServlet {
 		System.out.println("오픈될 페이지 :" + command.getView());
 		DispatcherServlet.go(request, response, command.getView());
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
-	}
 
 
 

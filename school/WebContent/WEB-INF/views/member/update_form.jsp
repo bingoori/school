@@ -11,31 +11,31 @@
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">아이디</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="id" name="id" value="${member.id}" readonly/>
+							<input type="text" class="form-control" id="id" name="id" value="${sessionScope.user.id}" readonly/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="input_pw" class="col-sm-4 control-label">비밀번호</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="password" name="password" value="${member.password}"/>
+							<input type="text" class="form-control" id="password" name="password" value="${sessionScope.user.password}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="input_name" class="col-sm-4 control-label">이름</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="name" name="name" value="${member.name}" readonly/>
+							<input type="text" class="form-control" id="name" name="name" value="${sessionScope.user.name}" readonly/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="input_name" class="col-sm-4 control-label">주소</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="addr" name="addr" value="${member.addr}"/>
+							<input type="text" class="form-control" id="addr" name="addr" value="${sessionScope.user.addr}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="input_name" class="col-sm-4 control-label">생년월일</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="birth" name="birth" value="${member.birth}" readonly/>
+							<input type="text" class="form-control" id="birth" name="birth" value="${sessionScope.user.birth}" readonly/>
 						</div>
 					</div>
 					<div class="input_button text-center">

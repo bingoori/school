@@ -6,8 +6,8 @@
 	<div class="row display-table">
 		<div class="col-xs-12 col-sm-4 display-cell">
 			<ul id='admin_sidebar' class="nav nav-pills nav-stacked">
-				<li id ='allList'><a onclick="admin.memberList()">전체학생 목록보기</a></li>
-				<li id ='gradeList'><a onclick="admin.gradeList()">전체성적 목록보기</a></li>
+				<li id = 'allList'><a onclick="admin.memberList()">전체학생 목록보기</a></li>
+				<li id = 'gradeList'><a onclick="admin.gradeList()">전체성적 목록보기</a></li>
 				<li id = 'searchById'><a onclick="admin.searchById()">ID로 회원검색</a></li>
 				<li id = 'gradeAdd'><a onclick="admin.addScore()">학생 점수 입력</a></li>
 			</ul>
@@ -15,7 +15,7 @@
 		<div class="col-xs-12 col-sm-8 display-cell" id="result"
 			style="border: 1px solid black; height: 500px">
 			<div id='memList' style="display: none;">
-				 <jsp:include page="member_list.jsp" /> 
+				 <jsp:include page="../member/member_list.jsp" /> 
 			</div>
 			<div id='memAdd' style="display: none;">
 				<jsp:include page="member_add.jsp" />
@@ -72,7 +72,7 @@
 		</table>
 	</fieldset>
 
-	<!-- "/grade/admin_list2.do" -->
+	<!-- $('#target').load(""); -->
 	<script src="$(context)/resources/js/admin.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {

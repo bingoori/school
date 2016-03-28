@@ -21,7 +21,7 @@ import com.movie.web.grade.GradeMemberBean;
 /**
  * Servlet implementation class AdminController
  */
-@WebServlet({ "/admin/searchById.do","/grade/grade_add.do", "/admin/admin_form.do", "/admin/member_list.do", "/grade/admin_list.do",
+@WebServlet({ "/admin/searchById.do","/grade/grade_add.do", "/admin/admin_form.do","/admin/admin_login_form.do", "/admin/member_list.do", "/grade/admin_list.do",
 		"/grade/grade_addform.do" })
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,19 +32,30 @@ public class AdminController extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("관리자 화면");
 		Command command = new Command();
-
+		AdminBean aBean = new AdminBean();
 		List<GradeMemberBean> arrList = new ArrayList<GradeMemberBean>();
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
 		command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
+		
 		switch (arrStr.get(1)) {
+		
 		case "searchById":
 			System.out.println("====  SearchById ===========");
 			break;
-		case "admin_form":
-			System.out.println("====  관리자화면 ===========");
-			request.setAttribute("totalScore", service.getMemberList());
-			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
+		
+		case "admin_login_form":
+			System.out.println("====  관리자 로그인 페이지 이동 ===========");
+			if(service.getAdmin(request.getParameter("id"),request.getParameter("password"))== true)
+			{
+				request.setAttribute("totalScore", service.getMemberList());
+				command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));				
+			}else
+			{
+				command = CommandFactory.createCommand(arrStr.get(0), "admin_login_form");
+			}
+			
 			break;
+	 
 		case "admin_list":
 			request.setAttribute("totalScore", service.getMemberList());
 			command = CommandFactory.createCommand("grade", "grade_list");

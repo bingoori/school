@@ -25,4 +25,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public boolean getAdmin(String id, String pwd) {
+		
+		return dao.SelectAdmin(id, pwd);
+	}
+
 }

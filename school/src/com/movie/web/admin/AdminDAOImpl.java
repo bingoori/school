@@ -81,4 +81,28 @@ public AdminDAOImpl() {
 		return result;
 	}
 
+	@Override
+	public boolean SelectAdmin(String id, String pwd) {
+		boolean result = false;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT id AS id FROM Member WHERE id =" + "'" + id + "'" + "AND password=" + "'" + pwd + "'");	
+		String strId="";
+			while(rs.next())
+			{
+				strId = rs.getString("id");
+			}
+			if (strId.equals("")) {
+				result = false;
+			} else {
+				result = true;
+			}
+		} catch (Exception e) {
+			System.out.println("selectById에서 에러 발생");
+			e.printStackTrace();
+		}
+		 
+		return result;
+	}
+
 }

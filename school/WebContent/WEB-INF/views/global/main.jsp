@@ -8,6 +8,8 @@
 <div style="margin-left: 43.5%;">
    <a href="${context}/member/login_form.do">로그인</a> <br/>
    <a href="${context}/member/join_form.do">회원가입</a> <br/>
-   <a href="${context}/admin/admin_form.do">관리자</a>
+   <a href="${context}/admin/admin_login_form.do">관리자 이동</a> <br/>
+
 </div>
+ 
 <jsp:include page="footer.jsp" />
