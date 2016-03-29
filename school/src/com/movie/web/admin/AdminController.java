@@ -18,16 +18,19 @@ import com.movie.web.global.DispatcherServlet;
 import com.movie.web.global.Separate;
 import com.movie.web.grade.GradeBean;
 import com.movie.web.grade.GradeMemberBean;
+import com.movie.web.grade.GradeService;
+import com.movie.web.grade.GradeServiceImpl;
 import com.movie.web.member.MemberBean;
 
 /**
  * Servlet implementation class AdminController
  */
 @WebServlet({ "/admin/searchById.do","/grade/grade_add.do", "/admin/login.do","/admin/admin_login_form.do", "/admin/member_list.do", "/grade/admin_list.do",
-		"/grade/grade_addform.do" })
+		"/grade/grade_addform.do","/grade/grade_list.do" })
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminService service = AdminServiceImpl.getService();
+	private GradeService gradeService = GradeServiceImpl.getService();
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -81,17 +84,23 @@ public class AdminController extends HttpServlet {
 			command = CommandFactory.createCommand("grade", "grade_list");
 			break;*/
 		case "grade_addform":
+			System.out.println(request.getParameter("id"));
+			request.setAttribute("member",gradeService.selectGradeAll());
 			command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
 			break;
+			
 		case "grade_add":
+			System.out.println("===== 학점 추가 =====");
 			GradeBean gBean = new GradeBean();
+			System.out.println(request.getParameter("id")+"@id@");
+			System.out.println(Integer.parseInt(request.getParameter("java"))+"@java@");
 			gBean.setId(request.getParameter("id"));
 			gBean.setJava(Integer.parseInt(request.getParameter("java")));
 			gBean.setJsp(Integer.parseInt(request.getParameter("jsp")));
 			gBean.setSql(Integer.parseInt(request.getParameter("sql")));
 			gBean.setSpring(Integer.parseInt(request.getParameter("spring")));
 			if (service.addScore(gBean) == 1) {
-				command = CommandFactory.createCommand(arrStr.get(0), "admin_form");
+				command = CommandFactory.createCommand("admin", "admin_form");
 			} else {
 				command = CommandFactory.createCommand(arrStr.get(0), "grade_add");
 			}

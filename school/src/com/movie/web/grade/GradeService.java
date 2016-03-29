@@ -32,5 +32,6 @@ public interface GradeService {
 	public int getCount();
 	// 성적 이름 조회
 	public GradeBean getGradeById(String id);
-	
+	// 모든 성적 조회
+	public GradeBean selectGradeAll();
 }

@@ -8,20 +8,13 @@
 			<ul id='admin_sidebar' class="nav nav-pills nav-stacked">
 				<li><a href="#" id='member_list'>전체학생 목록보기</a></li>
 				<li><a href="#" id='grade_list'>전체성적 목록보기</a></li>
-				<li><a href="#" id='grade_regist'>학생 점수 입력</a></li>
 			<!-- 	<li id = 'gradeAdd'><a onclick="admin.addScore()">학생 점수 입력</a></li> -->
 			</ul>
 		</div>
 		<div class="col-xs-12 col-sm-8 display-cell" id="result"
 			style="border: 1px solid black; height: 500px">
-			<div id='memList' style="display: none;">
-				 <%-- <jsp:include page="../member/member_list.jsp" /> --%> 
-			</div>
-			<div id='memAdd' style="display: none;">
-				<%-- <jsp:include page="member_add.jsp" /> --%>
-			</div>
+	 
 		</div>
-		<%-- 		 <jsp:include page="member_list.jsp" /> --%>
 	</div>
 
 
@@ -44,11 +37,7 @@
 			});
 			$('#grade_list').click(function() {
 				$('#result').empty();
-				$('#result').load('${context}/grade/list.do');
-			});
-			$('#grade_regist').click(function() {
-				$('#result').empty();
-				$('#result').load('${context}/member/grade_add.do');	
+				$('#result').load('${context}/grade/grade_list.do');
 			});
 
 		});

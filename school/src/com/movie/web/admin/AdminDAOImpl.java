@@ -66,6 +66,7 @@ public AdminDAOImpl() {
 		int result = 0;
 		try {
 			String sql = " INSERT INTO Grade(score_seq,id,java,sql,jsp,spring) VALUES (score_seq.nextval,?,?,?,?,?)";
+		//	INSERT INTO Grade(score_seq,id,java,sql,jsp,spring) 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, gBean.getId());
 			pstmt.setInt(2, gBean.getJava());
@@ -73,7 +74,14 @@ public AdminDAOImpl() {
 			pstmt.setInt(4, gBean.getSql());
 			pstmt.setInt(5, gBean.getSpring());
 			result = pstmt.executeUpdate();
-
+/*			create table Grade(
+					score_seq number PRIMARY KEY,
+					id VARCHAR2(30) NOT NULL,
+					java number,
+					sql number,
+					jsp number,
+					spring number
+				);*/
 		} catch (SQLException e) {
 			System.out.println("getMemberList에서 에러 발생");
 			e.printStackTrace();

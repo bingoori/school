@@ -276,5 +276,32 @@ public class GradeDAOImpl implements GradeDAO {
 		 */
 		return grade;
 	}
+	
+	@Override
+	public GradeBean selectGradeAll() {
+		GradeBean grade = new GradeBean();
+			
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM Grade ");
+			
+			while (rs.next()) {
+
+				grade.setHak(rs.getInt("score_seq"));
+				grade.setId(rs.getString("id"));				
+				grade.setJava(rs.getInt("java"));
+				grade.setJsp(rs.getInt("jsp"));
+				grade.setSql(rs.getInt("sql"));
+				grade.setSql(rs.getInt("spring"));
+				
+			}				
+
+		} catch (Exception e) {
+			System.out.println("selectById에서 에러 발생");
+			e.printStackTrace();
+		}
+
+		return grade;
+	}
 
 }

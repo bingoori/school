@@ -20,4 +20,6 @@ public interface GradeDAO {
 	public String update(int hak,int java,int jsp,int sql,int spring);
 	// 성적표 삭제 D
 	public String delete(String id);
+	// 전제 성적조회
+	public GradeBean selectGradeAll();
 }

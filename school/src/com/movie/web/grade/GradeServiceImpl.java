@@ -93,4 +93,10 @@ public class GradeServiceImpl implements GradeService {
 		
 	}
 
+	@Override
+	public GradeBean selectGradeAll() {
+		
+		return dao.selectGradeAll();
+	}
+
 }

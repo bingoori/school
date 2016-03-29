@@ -14,7 +14,7 @@
 	<c:forEach var="member" items="${requestScope['member']}">
 		<tr>
 			<td>${member.id}</td>
-			<td>${member.name}</td>
+			<td><a href="${context}/grade/grade_addform.do?id='${member.id}'">${member.name}</a></td>
 			<td>${member.major}</td>
     		<td>${member.subject}</td>
 			<td>${member.addr}</td>

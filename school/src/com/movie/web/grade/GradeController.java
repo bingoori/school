@@ -32,13 +32,12 @@ public class GradeController extends HttpServlet {
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
 		 command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 		switch (arrStr.get(1)) {
-		
 		case "my_grade":
-		
 			request.setAttribute("score", service.getGradeById(request.getParameter("id")));
 			// command = CommandFactory.createCommand(directory, "main");
 			command = CommandFactory.createCommand(arrStr.get(0), "myGrade");
 			break;
+			
 		default:
 			break;
 		}

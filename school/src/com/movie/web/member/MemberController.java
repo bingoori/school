@@ -2,7 +2,8 @@ package com.movie.web.member;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,17 +75,25 @@ public class MemberController extends HttpServlet {
 			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
 		case "join":
-	
-			System.out.println(request.getParameterValues("subject"));
-			System.out.println(request.getParameter("major")+"major");
+/*			Map<String,String[]> map = new HashMap<String,String[]>();
+			map = request.getParameterMap();
+			String[] arr = map.get("subject");
+			StringBuffer buff = new StringBuffer();
+			for (int i = 0; i < arr.length; i++) {
+				buff.append(arr[i]+"/");			
+			}*/
+			String[] arr = request.getParameterValues("subject");
+			StringBuffer buff = new StringBuffer();
+			for (int i = 0; i < arr.length; i++) {
+				buff.append(arr[i]+"/");			
+			}
 			mBean.setId(request.getParameter("id"));
 			mBean.setPassword(request.getParameter("password"));
 			mBean.setName(request.getParameter("name"));
 			mBean.setAddr(request.getParameter("addr"));
-			mBean.setBirth(Integer.parseInt(request.getParameter("birth")));
-			mBean.setSubject(request.getParameter("subjects"));
-			mBean.setMajor(request.getParameter("major"));
-			
+			mBean.setBirth(Integer.parseInt(request.getParameter("addr")));
+			mBean.setMajor(request.getParameter("addr"));
+			mBean.setSubject(buff.toString());
 
 			if (service.join(mBean) == 1) {
 				command = CommandFactory.createCommand(arrStr.get(0), "login_form");
