@@ -44,7 +44,7 @@ public class MemberDAOImpl implements MemberDAO {
 			pstmt.setString(4, member.getAddr());
 			pstmt.setInt(5, member.getBirth());
 			pstmt.setString(6, member.getSubject());
-			pstmt.setString(6, member.getMajor());
+			pstmt.setString(7, member.getMajor());
 			result = pstmt.executeUpdate();
 			
       	

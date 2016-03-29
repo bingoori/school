@@ -28,7 +28,7 @@ drop table Member cascade constraint;
 truncate table Member;
 
 alter table Member add
-(major varchar2(100));
+(subject varchar2(100));
 
 update Member SET subject ='java/jsp/sql/spring',major ='computer' where id = 'hong';
 update Member SET subject ='java/jsp/sql/spring',major ='computer' where id = 'woo';

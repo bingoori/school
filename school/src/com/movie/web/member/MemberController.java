@@ -70,16 +70,21 @@ public class MemberController extends HttpServlet {
 			System.out.println("==== update_form ====");
 			
 			  mBean = service.detail(request.getParameter("id"));
-			  request.setAttribute("member", mBean);
-			 
+			  request.setAttribute("member", mBean);	 
 			command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 			break;
 		case "join":
+	
+			System.out.println(request.getParameterValues("subject"));
+			System.out.println(request.getParameter("major")+"major");
 			mBean.setId(request.getParameter("id"));
 			mBean.setPassword(request.getParameter("password"));
 			mBean.setName(request.getParameter("name"));
 			mBean.setAddr(request.getParameter("addr"));
 			mBean.setBirth(Integer.parseInt(request.getParameter("birth")));
+			mBean.setSubject(request.getParameter("subjects"));
+			mBean.setMajor(request.getParameter("major"));
+			
 
 			if (service.join(mBean) == 1) {
 				command = CommandFactory.createCommand(arrStr.get(0), "login_form");
