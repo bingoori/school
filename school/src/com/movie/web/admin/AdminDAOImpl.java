@@ -81,4 +81,31 @@ public AdminDAOImpl() {
 		return result;
 	}
 
+	@Override
+	public AdminBean SelectAdmin(AdminBean aBean) {
+		AdminBean temp = new AdminBean();
+System.out.println("받아온 아이디 "+aBean.getId() +";;;"+aBean.getPassword());
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM Admin WHERE id =? AND password =?");
+			pstmt.setString(1, aBean.getId());
+			pstmt.setString(2, aBean.getPassword());
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				temp.setId(rs.getString("id")); 
+				temp.setPassword(rs.getString("password")); 
+				temp.setName(rs.getString("name")); 
+				temp.setAddr(rs.getString("addr")); 
+				temp.setBirth(rs.getInt("birth")); 
+				temp.setRole(rs.getString("role")); 
+			}
+		 
+		} catch (Exception e) {
+			System.out.println("SelectAdmin에서 에러 발생");
+			e.printStackTrace();
+		}
+		 System.out.println("쿼리 조회 결과 : "+temp.getRole());
+		return temp;
+	}
+
 }

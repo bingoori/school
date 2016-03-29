@@ -25,4 +25,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public AdminBean getAdmin(AdminBean aBean) {
+		
+		return dao.SelectAdmin(aBean);
+	}
+
 }

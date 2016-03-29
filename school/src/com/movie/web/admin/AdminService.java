@@ -8,5 +8,6 @@ import com.movie.web.grade.GradeMemberBean;
 public interface AdminService {
 	public List<GradeMemberBean> getMemberList();
 	public int addScore(GradeBean gBean);
+	public AdminBean getAdmin(AdminBean aBean);
 
 }

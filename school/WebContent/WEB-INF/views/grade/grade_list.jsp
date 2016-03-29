@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div>
-	<jsp:include page="../global/header.jsp" />
+	<%-- <jsp:include page="../global/header.jsp" /> --%>
 <form action="${context}/member/admin_form.do">
 	<table cellpadding="3" cellspacing="3" border="1">
 
@@ -32,9 +32,10 @@
 			</c:forEach>
 	</table>
 	<div>
-	<input type="submit" value="되돌아가기" /></div>
+			<!-- <input type="submit" value="되돌아가기" /> -->
+		</div>
 </form>
 
-
-	<jsp:include page="../global/footer.jsp" />
+<%-- 
+	<jsp:include page="../global/footer.jsp" /> --%>
 </div>

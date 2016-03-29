@@ -1,6 +1,7 @@
 package com.movie.web.member;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class MemberServiceImpl implements MemberService {
 
@@ -52,6 +53,12 @@ public class MemberServiceImpl implements MemberService {
 	public boolean isMember(String id, String password) {
 
 		return dao.isMember(id, password);
+	}
+
+	@Override
+	public List<MemberBean> getList() {
+		
+		return dao.selectList();
 	}
 
 }

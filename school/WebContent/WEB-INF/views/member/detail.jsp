@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../global/header.jsp" />
+	
+ <jsp:include page="../global/header.jsp" /> 
+
 <div id="join">
-	<div class="joinTop">
-		<h2 class="text-center">회원 상세 정보</h2>
+	<div class="joinTop">      
+		<h2 class="text-center">${sessionScope.user.name}회원 상세 정보</h2>
 	</div>
 	<div class="joinCenter row">
-		<form action="${context}/member/update_form.do" name="updateForm"
-			class="form-horizontal">
-			<fieldset class="joinField">
+		<form>
 				<div class="form-group">
 					<label for="input_id" class="col-sm-4 control-label">아이디</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="id" name="id"
-							value=" ${member.id}" readonly />
+							value=" ${sessionScope.user.id}" readonly />
 
 					</div>
 				</div>
@@ -21,48 +21,69 @@
 					<label for="input_pw" class="col-sm-4 control-label">비밀번호</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="password"
-							name="password" value="${member.password}" readonly />
+							name="password" value="${sessionScope.user.password}" readonly />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="input_name" class="col-sm-4 control-label">이름</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="name" name="name"
-							value="${member.name}" readonly />
+							value="${sessionScope.user.name}" readonly />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="input_name" class="col-sm-4 control-label">주소</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="addr" name="addr"
-							value=" ${member.addr}" readonly />
+							value=" ${sessionScope.user.addr}" readonly />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="input_name" class="col-sm-4 control-label">생년월일</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="birth" name="birth"
-							value="${member.birth}" readonly />
+							value="${sessionScope.user.birth}" readonly />
 					</div>
 				</div>
 	</div>
-	</fieldset>
 	</form>
 	
 	<div class="input_button text-center">
-		<form action="${context}/grade/my_grade.do">
 		
-		<input type="submit" id="updateButton" class="btn btn-primary" value="성적" /> 
-		<input type="hidden" id="id" name="id" value="${member.id}" />
+		<button id = "gradeButton">성적</button>
+		<button id = "updateButton">수정</button>
+		<button id = "deleteButton">삭제</button>
+		<button id = "homeButton">홈</button>
 		
-		<input type="submit" formaction="${context}/member/update_form.do" id="updateButton" class="btn btn-primary" value="수정" /> 
-		<input type="hidden" id="update" name="update" value="${member.id}" />
-		
-		<input type="submit" formmethod="post" formaction="${context}/member/delete.do" id="deleteButton" class="btn btn-primary" value="삭제" /> 
-		<input type="hidden" id="delete" name="delete" value="${member.id}" />
-		<input type="submit" value="홈으로" formaction="${context}/global/main.do" class="btn btn-primary"/>
-		</form>
-			
 	</div>
-		<jsp:include page="../global/footer.jsp" />
 </div>
+	<script type="text/javascript">
+	
+	$(function() {
+		var $form = $('form');
+		$form.addClass('form-horizontal');	
+		$('#gradeButton').addClass('btn btn-primary');
+		$('#updateButton').addClass('btn btn-primary');
+		$('#deleteButton').addClass('btn btn-primary');
+		$('#homeButton').addClass('btn btn-primary');
+			
+		$('#gradeButton').click(function() {
+			location.href='${context}/grade/my_grade.do?id=${sessionScope.user.id}';	
+		});
+		$('#updateButton').click(function() {
+			location.href='${context}/member/update_form.do?id=${sessionScope.user.id}';		
+		});
+		$('#deleteButton').click(function() {
+			location.href='${context}/member/delete.do?id=${sessionScope.user.id}';		
+		});
+		$('#homeButton').click(function() {
+			location.href='${context}/global/main.do';		
+		});
+	
+
+	
+	});
+	
+	
+	</script>
+

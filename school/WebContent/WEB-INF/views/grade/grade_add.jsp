@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div>
-<form action="${context}/member/grade_add.do" >
+<form action="${context}/admin/admin_form.do" >
 <table>
 	<tr>
 		<td>아이디</td>
@@ -30,5 +30,5 @@
 	</div>
 </form>
 
-	<jsp:include page="../global/footer.jsp" />
+	<%-- <jsp:include page="../global/footer.jsp" /> --%>
 </div>
