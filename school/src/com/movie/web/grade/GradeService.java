@@ -1,6 +1,7 @@
 package com.movie.web.grade;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,5 +34,5 @@ public interface GradeService {
 	// 성적 이름 조회
 	public GradeBean getGradeById(String id);
 	// 모든 성적 조회
-	public GradeBean selectGradeAll();
+	public List<GradeBean> selectGradeAll();
 }

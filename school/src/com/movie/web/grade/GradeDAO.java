@@ -1,6 +1,7 @@
 package com.movie.web.grade;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public interface GradeDAO {
@@ -21,5 +22,5 @@ public interface GradeDAO {
 	// 성적표 삭제 D
 	public String delete(String id);
 	// 전제 성적조회
-	public GradeBean selectGradeAll();
+	public List<GradeBean> selectGradeAll();
 }

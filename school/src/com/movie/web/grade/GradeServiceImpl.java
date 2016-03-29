@@ -1,6 +1,7 @@
 package com.movie.web.grade;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GradeServiceImpl implements GradeService {
 	/*
@@ -94,7 +95,7 @@ public class GradeServiceImpl implements GradeService {
 	}
 
 	@Override
-	public GradeBean selectGradeAll() {
+	public List<GradeBean> selectGradeAll() {
 		
 		return dao.selectGradeAll();
 	}

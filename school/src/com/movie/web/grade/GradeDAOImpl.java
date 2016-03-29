@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.movie.web.global.Constants;
@@ -278,22 +279,23 @@ public class GradeDAOImpl implements GradeDAO {
 	}
 	
 	@Override
-	public GradeBean selectGradeAll() {
-		GradeBean grade = new GradeBean();
+	public List<GradeBean> selectGradeAll() {
+		List<GradeBean> grade = new ArrayList<GradeBean>();
+		GradeBean temp;
 			
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM Grade ");
 			
 			while (rs.next()) {
-
-				grade.setHak(rs.getInt("score_seq"));
-				grade.setId(rs.getString("id"));				
-				grade.setJava(rs.getInt("java"));
-				grade.setJsp(rs.getInt("jsp"));
-				grade.setSql(rs.getInt("sql"));
-				grade.setSql(rs.getInt("spring"));
-				
+				temp = new GradeBean();
+				temp.setHak(rs.getInt("score_seq"));
+				temp.setId(rs.getString("id"));				
+				temp.setJava(rs.getInt("java"));
+				temp.setJsp(rs.getInt("jsp"));
+				temp.setSql(rs.getInt("sql"));
+				temp.setSpring(rs.getInt("spring"));
+				grade.add(temp);
 			}				
 
 		} catch (Exception e) {

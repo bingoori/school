@@ -13,7 +13,7 @@
 			<th>Sql</th>
 			<th>Spring</th>
 		</tr>
-		<c:forEach var="score" items="${requestScope['totalScore']}">
+		<c:forEach var="score" items="${requestScope['member']}">
 			<tr>
 				<td><c:out value="${score.id}" /></td>
 				<td><c:out value="${score.java}" /></td>

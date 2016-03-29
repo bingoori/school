@@ -37,13 +37,19 @@ public class AdminController extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("관리자 화면");
 		HttpSession session = request.getSession();
+		GradeBean gBean = new GradeBean();
 		Command command = new Command();
 		AdminBean aBean = new AdminBean();
-		/*List<GradeMemberBean> arrList = new ArrayList<GradeMemberBean>();*/
+		List<GradeBean> arrList = new ArrayList<GradeBean>();
 		ArrayList<String> arrStr = Separate.getValidityUrl(request);
 		command = CommandFactory.createCommand(arrStr.get(0), arrStr.get(1));
 		
 		switch (arrStr.get(1)) {
+		case "grade_list":
+			  arrList = gradeService.selectGradeAll();
+			request.setAttribute("member", arrList);
+			command = CommandFactory.createCommand("grade",arrStr.get(1));
+			break;
 		case "login":
 			
 		System.out.println("관리자 로그인 진입");
@@ -91,7 +97,7 @@ public class AdminController extends HttpServlet {
 			
 		case "grade_add":
 			System.out.println("===== 학점 추가 =====");
-			GradeBean gBean = new GradeBean();
+			
 			System.out.println(request.getParameter("id")+"@id@");
 			System.out.println(Integer.parseInt(request.getParameter("java"))+"@java@");
 			gBean.setId(request.getParameter("id"));
