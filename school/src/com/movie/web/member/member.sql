@@ -24,13 +24,15 @@ INSERT INTO Member(id,password,name,addr,birth)
 VALUES ('choi2','1','최길동','종로',840101);
 
 drop table Member cascade constraint;
-SELECT * FROM Member;
-SELECT * FROM Member 
-WHERE id = 'choi';
-SELECT id AS id , password AS password FROM Member WHERE id ='choi' AND password='1';
-SELECT * FROM Member where id = 'woo';
-
-SELECT * FROM Member WHERE id ='woo';
- delete from Member where id ='bingoori';
-DELETE  FROM Member WHERE id = 'woo';
+ 
 truncate table Member;
+
+alter table Member add
+(major varchar2(100));
+
+update Member SET subject ='java/jsp/sql/spring',major ='computer' where id = 'hong';
+update Member SET subject ='java/jsp/sql/spring',major ='computer' where id = 'woo';
+update Member SET subject ='java/jsp/sql/spring',major ='info' where id = 'ji';
+update Member SET subject ='java/jsp/sql/spring',major ='info' where id = 'cho';
+update Member SET subject ='java/jsp/sql/spring', major ='security' where id = 'choi';
+update Member SET subject ='java/jsp/sql/spring', major ='security' where id = 'choi2';

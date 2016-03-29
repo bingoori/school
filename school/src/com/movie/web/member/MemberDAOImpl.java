@@ -36,13 +36,15 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		int result = 0;
 		try {
-			String sql = " INSERT INTO Member(id,password,name,addr,birth) VALUES(?,?,?,?,?)";
+			String sql = " INSERT INTO Member(id,password,name,addr,birth,subject,major) VALUES(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getAddr());
 			pstmt.setInt(5, member.getBirth());
+			pstmt.setString(6, member.getSubject());
+			pstmt.setString(6, member.getMajor());
 			result = pstmt.executeUpdate();
 			
       	
@@ -70,8 +72,27 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean selectById(String id, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberBean temp = new MemberBean();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM Member WHERE id =" + "'" + id + "'");
+
+			while (rs.next()) {
+
+				temp.setId(rs.getString("id"));
+				temp.setPassword(rs.getString("password"));
+				temp.setName(rs.getString("name"));
+				temp.setAddr(rs.getString("addr"));
+				temp.setBirth(rs.getInt("birth"));
+				temp.setMajor(rs.getString("major"));
+				temp.setSubject(rs.getString("subject"));
+			}
+		} catch (Exception e) {
+			System.out.println("selectById에서 에러 발생");
+			e.printStackTrace();
+		}
+		System.out.println("쿼리 조회 결과 :" + temp.getId());
+		return temp;
 	}
 
 	@Override
@@ -88,7 +109,8 @@ public class MemberDAOImpl implements MemberDAO {
 				temp.setName(rs.getString("name"));
 				temp.setAddr(rs.getString("addr"));
 				temp.setBirth(rs.getInt("birth"));
-
+				temp.setMajor(rs.getString("major"));
+				temp.setSubject(rs.getString("subject"));
 			}
 		} catch (Exception e) {
 			System.out.println("selectById에서 에러 발생");
@@ -176,6 +198,8 @@ public class MemberDAOImpl implements MemberDAO {
 				temp.setName(rs.getString("name"));
 				temp.setAddr(rs.getString("addr"));
 				temp.setBirth(rs.getInt("birth"));
+				temp.setMajor(rs.getString("major"));
+				temp.setSubject(rs.getString("subject"));
 				list.add(temp);
 			}
 		} catch (Exception e) {

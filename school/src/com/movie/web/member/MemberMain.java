@@ -10,7 +10,7 @@ public class MemberMain {
 			switch (s.nextInt()) {
 			case 1: 
 				System.out.println("아이디,비번,이름,생년월일,주소 입력");
-				System.out.println("회원가입성공 : "+ service.join(new MemberBean(s.next(),s.next(),s.next(),s.nextInt(),s.next ())));
+			//	System.out.println("회원가입성공 : "+ service.join(new MemberBean(s.next(),s.next(),s.next(),s.nextInt(),s.next ())));
 				break;
 			case 2: break;
 			case 3: 
